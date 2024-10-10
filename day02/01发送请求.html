@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box"></div>
+  </body>
+  <script>
+    // 定义请求方法
+    const getData = async () => {
+      //发出请求
+      // await 等待异步结果   第一步
+      const res = await fetch(
+        `https://api.tf2sc.cn/api/tfcar/car/list?page=3`,
+        {
+          // 请求头
+          headers: {
+            platformtype: "h5",
+          },
+        }
+      );
+      //拿到结果 解析出内部携带的数据 第二步
+      const data = await res.json();
+
+      console.log(data.data.content); //在控制台输出
+      // 将数据插入到页面中 第三步
+      data.data.content.forEach((item) => {
+        box.innerHTML += `<p>${item.carName}</p>`;
+      });
+    };
+
+    getData();
+  </script>
+</html>

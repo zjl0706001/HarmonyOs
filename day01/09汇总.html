@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: aliceblue;
+      }
+      .product {
+        width: 300px;
+        background-color: white;
+        /* 圆角 */
+        border-radius: 10px;
+        /* 溢出隐藏 */
+        overflow: hidden;
+        margin: 5px;
+      }
+      .pic {
+        width: 300px;
+      }
+      .box {
+        margin-left: 10px;
+        padding-bottom: 10px;
+      }
+      .date {
+        color: rgb(109, 109, 109);
+      }
+      .price {
+        font-size: 20px;
+        color: red;
+        font-weight: bolder;
+      }
+      .parent {
+        width: 1240px;
+        display: flex;
+        flex-wrap: wrap;
+        /* background-color: red; */
+        /* 上下 左右 */
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent" id="box"></div>
+  </body>
+  <script>
+    let cars = [
+      {
+        ind: "202106161151190127",
+        carName: "2007款 捷豹XJ(进口) XJ6L 新一代皇家加长版",
+        dateOfRegistration: 1196438400000,
+        currentPrice: 21.09,
+        mileage: 16.68,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/398795710192943104.JPG?x-oss-process=style/watermark",
+        reportAssess: true,
+      },
+      {
+        ind: "202112040957088478",
+        carName: "2012款 奔驰S级(进口) S400L HYBRID Grand Edition",
+        dateOfRegistration: 1356969600000,
+        currentPrice: 13.5,
+        mileage: 14.44,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/573451087734898688.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202203061736173489",
+        carName: "2014款 保时捷Panamera 3.0T",
+        dateOfRegistration: 1480521600000,
+        currentPrice: 29.5,
+        mileage: 7.35,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/296700087902404608.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202208231655311058",
+        carName: "2007款 阿斯顿马丁DB9(进口) 6.0L Coupe Touchtronic",
+        dateOfRegistration: 1351699200000,
+        currentPrice: 39.9,
+        mileage: 4.05,
+        saleType: 1,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/401056272402612224.JPG?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202111211043217991",
+        carName: "2010款 飞驰(进口) 6.0T 4座",
+        dateOfRegistration: 1314806400000,
+        currentPrice: 46.0,
+        mileage: 16.3,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/402154469820727296.JPG?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202301301731187710",
+        carName: "2017款 FJ酷路泽(进口) 4.0 两气囊 双油箱 JBL 中东",
+        dateOfRegistration: 1514736000000,
+        currentPrice: 25.9,
+        mileage: 1.37,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/573449659016544256.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202302061723008488",
+        carName: "2017款 牧马人(进口) 3.0L 四门舒享版 Sahara",
+        dateOfRegistration: 1501516800000,
+        currentPrice: 20.2,
+        mileage: 8.3,
+        saleType: 1,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/552781138272190464.png?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202302091403598643",
+        carName: "2019款 途锐(进口) 2.0TSI 领航版 国VI",
+        dateOfRegistration: 1569859200000,
+        currentPrice: 22.9,
+        mileage: 6.2,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/573450044070428672.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202301031603416395",
+        carName: "2016款 F系列(进口) F-150 勇猛者 3.5T",
+        dateOfRegistration: 1538323200000,
+        currentPrice: 43.4,
+        mileage: 2.5,
+        saleType: 1,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/402771538069159936.JPG?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202309301137267785",
+        carName: "2010款 奔驰C级 C 200K 时尚型",
+        dateOfRegistration: 1270051200000,
+        currentPrice: 2.5,
+        mileage: 11.98,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/445187439162556416.JPG?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202306201726265156",
+        carName: "2012款 揽胜运动版(进口) 5.0L V8 NA HSE",
+        dateOfRegistration: 1325347200000,
+        currentPrice: 14.9,
+        mileage: 11.75,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/573440931412312064.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202309241759557650",
+        carName: "保时捷 Panamera 2010款 4 3.6L",
+        dateOfRegistration: 1317398400000,
+        currentPrice: 16.9,
+        mileage: 11.5,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/443109329483071488.jpeg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202307051734325799",
+        carName: "2021款 沃尔沃XC90(进口) B6 智逸豪华版 7座",
+        dateOfRegistration: 1640966400000,
+        currentPrice: 36.59,
+        mileage: 2.69,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/573471132951248896.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202304101533062472",
+        carName: "2018款 MINI(进口) 1.5T ONE PLUS",
+        dateOfRegistration: 1554048000000,
+        currentPrice: 9.9,
+        mileage: 2.72,
+        saleType: 1,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/382553332792688640.jpeg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202303081739310830",
+        carName: "2018款 宝马X3 xDrive28i M运动套装 国VI",
+        dateOfRegistration: 1546272000000,
+        currentPrice: 18.9,
+        mileage: 5.63,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/574631809338310656.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202304150946312743",
+        carName:
+          "2017款 三菱 帕杰罗・劲畅(进口) 2017款 帕杰罗·劲畅 3.0L GLS 丝绒(中东)",
+        dateOfRegistration: 1598889600000,
+        currentPrice: 15.1,
+        mileage: 6.75,
+        saleType: 1,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/441930845066887168.jpeg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202308141146336936",
+        carName: "2013款 威霆 3.0L 精英版",
+        dateOfRegistration: 1430409600000,
+        currentPrice: 10.9,
+        mileage: 11.81,
+        saleType: 0,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/428157666427142144.jpeg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202307091442585965",
+        carName: "长城 炮 2022款 2.0T黑弹特别版GW4C20B",
+        dateOfRegistration: 1672502400000,
+        currentPrice: 19.7,
+        mileage: 0.65,
+        saleType: 1,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/573442708769603584.jpg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202401301527235723",
+        carName: "2020款 马自达CX-4 2.0L 自动两驱蓝天品位版",
+        dateOfRegistration: 1619798400000,
+        currentPrice: 9.89,
+        mileage: 6.0,
+        saleType: 3,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/489456974589591552.jpeg?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+      {
+        ind: "202305181525414279",
+        carName: "2010款 雷克萨斯ES(进口) 350 豪华版",
+        dateOfRegistration: 1296489600000,
+        currentPrice: 12.1,
+        mileage: 17.0,
+        saleType: 1,
+        cover:
+          "https://tfcar.oss-cn-hangzhou.aliyuncs.com/396321600808419328.JPG?x-oss-process=style/watermark",
+        reportAssess: false,
+      },
+    ];
+
+    cars.forEach((item) => {
+      // 追加单个车辆的布局结构
+      box.innerHTML += `
+        <div class="product">
+          <img
+            class="pic"
+            src="${item.cover}"
+            alt=""
+          />
+          <div class="box">
+            <a href="https://www.tf2sc.cn/detail/ershouche/b64/${item.ind}.html">${item.carName}</a>
+            <p class="date">${item.dateOfRegistration}/${item.mileage}万公里</p>
+            <p class="price">${item.currentPrice}万</p>
+          </div>
+        </div>
+      `;
+    });
+  </script>
+</html>

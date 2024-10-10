@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(234, 233, 233);
+      }
+      .parent {
+        background-color: rgb(234, 233, 233);
+      }
+      .product {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: rgb(242, 241, 241);
+        border-bottom: 1px solid rgb(225, 225, 225);
+      }
+      .pic {
+        width: 40px;
+      }
+      .indexworld {
+        width: 40px;
+        margin-left: 5px;
+      }
+      .biaoti {
+        margin-left: 10px;
+      }
+      span {
+        display: inline-block;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent" id="box"></div>
+    <script>
+      var box = document.getElementById("box");
+      var content;
+      var ans = "A";
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.open(
+        "GET",
+        "https://api.tf2sc.cn/api/tfcar/car/brand300",
+        true
+      );
+      httpRequest.setRequestHeader("PlatformType", "h5");
+      httpRequest.send();
+      httpRequest.onreadystatechange = function () {
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+          var json = httpRequest.responseText;
+          var data = JSON.parse(json);
+          content = data.data.content;
+          if (content && content.length > 0) {
+            box.innerHTML += `<span class="indexworld">${ans}</span>`;
+            content.forEach((item) => {
+              if (item.brand[0] != ans) {
+                box.innerHTML += `<span class="indexworld">${item.brand[0]}</span>`;
+                ans = item.brand[0];
+              }
+              box.innerHTML += `
+                <div class="product">
+                  <img
+                    class="pic"
+                    src="${item.imageUrl}"
+                    alt=""
+                  />
+                  <div class="biaoti">${item.brand.slice(4)}</div>
+                </div>
+              `;
+            });
+          } else {
+            box.innerHTML = "没有数据";
+          }
+        }
+      };
+    </script>
+  </body>
+</html>

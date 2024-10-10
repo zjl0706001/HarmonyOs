@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="title"></h1>
+    <div id="box"></div>
+  </body>
+  <script>
+    title.innerHTML += "1";
+    title.innerHTML += "2";
+    // 数据
+    let singers = ["周杰伦", "林俊杰", "王力宏", "张学友", "刘德华"];
+    // 挨个取出数组中的元素 item表示数组中单个元素
+    // 数组中有多少个元素 函数执行多少次
+    singers.forEach((item) => {
+      // alert(item);
+      // 往id是box的元素中追加新内容
+      box.innerHTML += `<p>${item}</p>`;
+    });
+  </script>
+</html>

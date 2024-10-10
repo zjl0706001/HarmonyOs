@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- 声明文档类型为 HTML5 -->
+<html lang="en">
+  <head>
+    <!-- 头部元素，包含文档的元数据 -->
+    <meta charset="UTF-8" />
+    <!-- 设置文档的字符编码为 UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 设置视口宽度与设备宽度相同，并且初始缩放比例为 1 -->
+    <title>Document</title>
+    <!-- 定义网页的标题 -->
+    <style>
+      p {
+        font-size: 30px;
+      }
+      /* 设置所有 <p> 元素的字体大小为 30 像素 */
+
+      /* 指定类名是 txt01 的元素 */
+      .txt01 {
+        color: red;
+      }
+      /* 设置类名为 txt01 的元素文字颜色为红色 */
+
+      .txt02 {
+        color: blue;
+      }
+      /* 设置类名为 txt02 的元素文字颜色为蓝色 */
+
+      .title {
+        background-color: yellow;
+      }
+      /* 设置类名为 title 的元素背景色为黄色 */
+    </style>
+  </head>
+  <body>
+    <!-- 页面主体部分，包含所有可见内容 -->
+    <!-- 一个元素可以指定多个类名 -->
+    <p class="txt01 title">hello</p>
+    <!-- 应用了 txt01 和 title 类，因此文字颜色为红色并且背景为黄色 -->
+
+    <p class="txt02">world</p>
+    <!-- 应用了 txt02 类，因此文字颜色为蓝色 -->
+
+    <p class="txt01">hello</p>
+    <!-- 再次应用了 txt01 类，因此文字颜色为红色 -->
+
+    <p class="txt02">world</p>
+    <!-- 再次应用了 txt02 类，因此文字颜色为蓝色 -->
+  </body>
+</html>
