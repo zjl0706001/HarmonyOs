@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>页面</h1>
+    <input type="text" id="keyword" />
+    <button id="search">百度一下</button>
+  </body>
+  <script>
+    // split切割字符串 指定切割符 会得到切割之后的数组
+    console.log(location.href.split("=")[1]);
+    let id = location.href.split("=")[1];
+
+    search.onclick = () => {
+      //跳转至百度搜索结果页  拼接关键字
+      location.href = `https://www.baidu.com/s?wd=${keyword.value}`;
+    };
+  </script>
+</html>

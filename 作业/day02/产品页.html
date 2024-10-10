@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: aliceblue;
+      }
+      .product {
+        width: 300px;
+        background-color: white;
+        /* 圆角 */
+        border-radius: 10px;
+        /* 溢出隐藏 */
+        overflow: hidden;
+        margin: 5px;
+      }
+      .pic {
+        width: 300px;
+        height: 223px;
+        /* 图片宽高比不变 撑满设定的区域 有可能显示不完整*/
+        object-fit: cover;
+      }
+      .box {
+        margin-left: 10px;
+        padding-bottom: 10px;
+      }
+      .date {
+        color: rgb(109, 109, 109);
+      }
+      .price {
+        font-size: 20px;
+        color: red;
+        font-weight: bolder;
+      }
+      .parent {
+        width: 1240px;
+        display: flex;
+        flex-wrap: wrap;
+        /* background-color: red; */
+        /* 上下 左右 */
+        margin: 0 auto;
+      }
+      .getMore {
+        margin: 0 auto;
+        display: block;
+        padding: 20px;
+        font-size: 30px;
+      }
+      .searchBox {
+        width: 500px;
+        margin: 0 auto;
+        padding: 30px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="searchBox">
+      <input id="keyword" type="text" />
+      <button id="search">搜索</button>
+    </div>
+    <div class="parent" id="box"></div>
+    <button id="getMore" class="getMore">加载更多</button>
+  </body>
+  <script>
+    // 定义请求方法
+    const getData = async (a, b) => {
+      //发出请求
+      // await 等待异步结果   第一步
+      let url = "";
+      //判断是否有搜索参数
+      if (b == "") {
+        url = `https://api.tf2sc.cn/api/tfcar/car/list?page=${a}`;
+      } else {
+        url = `https://api.tf2sc.cn/api/tfcar/car/list?page=${a}&carName=${b}`;
+      }
+
+      const res = await fetch(url, {
+        // 请求头
+        headers: {
+          platformtype: "h5",
+        },
+      });
+      //拿到结果 解析出内部携带的数据 第二步
+      const data = await res.json();
+
+      console.log(data.data.content); //在控制台输出
+      // 将数据插入到页面中 第三步
+      data.data.content.forEach((item) => {
+        box.innerHTML += `
+          <a href="详情页.html?ind=${item.ind}">
+            <div class="product">
+                <img
+                  class="pic"
+                  src="${item.cover}"
+                  alt=""
+                />
+              <div class="box">
+                <h3>${item.carName}</h3>
+                <p class="date">2013年01月/${item.mileage}万公里</p>
+                <p class="price">${item.currentPrice}万起</p>
+              </div>
+            </div>
+          </a>  
+        `;
+      });
+    };
+    let carName = location.href.split("=")[1];
+
+    let num = 1; //记录页码
+    if (carName == undefined) {
+      getData(num, "");
+    } else {
+      getData(num, carName);
+    }
+    getMore.onclick = () => {
+      num++; //递增
+      getData(num, carrrName);
+    };
+    // 搜索
+    search.onclick = () => {
+      //清空列表
+      box.innerHTML = "";
+      getData(num, keyword.value);
+    };
+  </script>
+</html>

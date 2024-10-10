@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>详情页</h2>
+    <h3 id="title"></h3>
+    <div id="picBox"></div>
+  </body>
+  <script>
+    //取出地址中携带的车辆id
+    let id = location.href.split("=")[1];
+    //定位发送请求的方法
+    const getDetail = async () => {
+      // 使用路径中截取的id号发送请求 获取详情信息
+      const res = await fetch(
+        `https://api.tf2sc.cn/api/tfcar/car/basicInfo/${id}`,
+        {
+          headers: {
+            platformtype: "h5",
+          },
+        }
+      );
+      const data = await res.json();
+
+      //更新页面内容
+      title.innerText = data.data.carName;
+      // 切割图片数组
+      console.log(data.data.photoVo.detail.split(","));
+      // 展示图片
+      data.data.photoVo.detail.split(",").forEach((item) => {
+        picBox.innerHTML += `<img src="${item}"/>`;
+      });
+    };
+
+    getDetail();
+  </script>
+</html>

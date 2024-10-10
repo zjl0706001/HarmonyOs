@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #climg img {
+        width: 300px;
+        margin-top: 10px;
+        margin-left: 10px;
+      }
+      #picBox {
+        display: flex;
+        align-items: center;
+      }
+      #info {
+        margin-left: 20px;
+      }
+      #cjh,
+      #title,
+      #xq {
+        margin: 5px 0;
+      }
+      .product {
+        width: 300px;
+        height: 400px;
+        background-color: white;
+        /* 圆角 */
+        border-radius: 10px;
+        /* 溢出隐藏 */
+        overflow: hidden;
+        margin: 5px;
+      }
+      #tltj {
+        display: flex;
+        flex-wrap: wrap;
+        /* background-color: red; */
+        /* 上下 左右 */
+        margin: 0 auto;
+      }
+      .pic1 {
+        width: 300px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>车辆信息</h1>
+      <div id="picBox">
+        <div id="img">
+          <img src="" alt="" />
+        </div>
+        <div id="info">
+          <div id="cjh">车架号</div>
+          <div id="title">车名</div>
+          <div id="xq">详情</div>
+        </div>
+      </div>
+      <h1>车辆图片</h1>
+      <div id="climg"></div>
+      <h1>同类推荐</h1>
+      <div id="tltj"></div>
+    </div>
+    <script>
+      // 取出地址中携带的车辆id
+      let id = location.href.split("=")[1];
+      const getDetail = async () => {
+        const res = await fetch(
+          `https://api.tf2sc.cn/api/tfcar/car/basicInfo/${id}`,
+          {
+            headers: {
+              platformtype: "h5",
+            },
+          }
+        );
+        const data = await res.json();
+        console.log(data);
+
+        // 更新页面内容
+        title.innerText = data.data.carName;
+        document.getElementById("cjh").innerText = data.data.carId.slice(8);
+        document.getElementById(
+          "xq"
+        ).innerHTML = `<a href="详情页.html?ind=${data.data.ind}">查看详情</a>`;
+
+        // 展示图片
+        data.data.photoVo.detail.split(",").forEach((item) => {
+          document.getElementById("climg").innerHTML += `<img src="${item}"/>`;
+        });
+      };
+      getDetail();
+
+      const getData = async () => {
+        let url = `https://api.tf2sc.cn/api/tfcar/car/similarRecommendation/${id}`;
+
+        const resp = await fetch(url, {
+          headers: {
+            platformtype: "h5",
+          },
+        });
+        const data1 = await resp.json();
+
+        console.log(data1);
+        data1.data.forEach((item) => {
+          console.log(item);
+          tltj.innerHTML += `
+            <a href="详情页.html?ind=${item.ind}">
+                <div class="product">
+                    <img class="pic1" src="${item.cover}" alt=""/>
+                    <div class="box1">
+                        <h3>${item.carName}</h3>
+                        <p class="date1">2013年01月/${item.mileage}万公里</p>
+                        <p class="price1">${item.currentPrice}万起</p>
+                    </div>
+                </div>
+            </a>
+          `;
+        });
+      };
+      getData();
+    </script>
+  </body>
+</html>
