@@ -64,6 +64,7 @@
     <div class="searchBox">
       <input id="keyword" type="text" />
       <button id="search">搜索</button>
+      <button id="xinwen">新闻资讯</button>
     </div>
     <div class="parent" id="box"></div>
     <button id="getMore" class="getMore">加载更多</button>
@@ -128,6 +129,9 @@
       //清空列表
       box.innerHTML = "";
       getData(num, keyword.value);
+    };
+    xinwen.onclick = () => {
+      location.href = "../day03/新闻资讯.html";
     };
   </script>
 </html>

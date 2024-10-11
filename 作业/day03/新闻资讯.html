@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        min-width: 1200px;
+        height: 100%;
+        overflow: auto;
+        font-size: 14px;
+        font-weight: 400;
+        color: #333333;
+      }
+      .news_item {
+        display: flex;
+        margin-top: 50px;
+        margin-left: 20px;
+      }
+      .news_item img {
+        width: 200px;
+        height: 160px;
+      }
+      a {
+        text-decoration: none;
+        color: #333333;
+      }
+      .info_title {
+        font-size: 30px;
+        font-weight: bolder;
+      }
+      .info_des {
+        font-size: 20px;
+        margin-top: 10px;
+        line-height: 30px;
+        color: #666666;
+      }
+      .info_num {
+        font-size: 15px;
+        margin-top: 10px;
+        color: #666666;
+        margin-top: 40px;
+      }
+      .news_info {
+        width: 90%;
+        margin-top: 10px;
+        margin-left: 30px;
+        border-bottom: 1px solid rgb(225, 225, 225);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div>
+        <ul class="newsInfo_topContainer">
+          <li><button id="xinwen">公司新闻</button></li>
+          <li><button id="hangqing">行情导购</button></li>
+          <li><button id="wenti">常见问题</button></li>
+        </ul>
+      </div>
+      <div class="newsInfo_tabContainerBox" id="newsInfo_tabContainerBox"></div>
+    </div>
+  </body>
+  <script>
+    const xinwenURL = "https://api.tf2sc.cn/api/tfcar/website/allNews";
+    const hangqingURL = "https://api.tf2sc.cn/api/tfcar/website/allMarketGuide";
+    const wentiURL = "https://api.tf2sc.cn/api/tfcar/website/allCommonProblem";
+    const getData = async (url, leixing) => {
+      let resp = await fetch(url, {
+        headers: {
+          platformtype: "h5",
+        },
+      });
+      let data = await resp.json();
+      console.log(data);
+      newsInfo_tabContainerBox.innerHTML = "";
+      data.data.forEach((item) => {
+        if (item.cover == null) {
+          newsInfo_tabContainerBox.innerHTML += `
+            <div class="news_info">
+              <div class="info_title">${item.title}</div>
+              <div class="info_des">${item.content}</div>
+              <div class="info_num">
+                <span>${item.utime}</span>
+              </div>
+            </div>
+          `;
+        } else {
+          newsInfo_tabContainerBox.innerHTML += `
+            <a href="咨询详情页.html?id=${leixing}/${item.id}" class="news_item">
+                <img src="${item.cover}"/>
+                <div class="news_info">
+                    <div class="info_title">
+                        ${item.title}
+                    </div>
+                    <div class="info_des">
+                        ${item.simple}
+                    </div>
+                    <div class="info_num" >
+                        <span>${item.utime}</span>
+                    </div>
+                </div>
+            </a>
+          `;
+        }
+      });
+    };
+    getData(xinwenURL, "news");
+    xinwen.onclick = () => {
+      getData(xinwenURL, "news");
+    };
+    hangqing.onclick = () => {
+      getData(hangqingURL, "marketGuide");
+    };
+    wenti.onclick = () => {
+      getData(wentiURL);
+    };
+  </script>
+</html>
