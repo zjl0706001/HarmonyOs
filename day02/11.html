@@ -4,18 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      body {
+        background-color: rgb(218, 226, 226);
+      }
+      .box1 {
+        background-color: blue;
+        margin-top: 10px;
+        height: 500px;
+        display: flex;
+      }
+      .box1 .box-item1 {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 25%;
+        background-color: rgb(5, 5, 5);
+      }
+      .box2 {
+        background-color: bisque;
+        margin-top: 30px;
+        width: 600px;
+        height: 500px;
+      }
+      .box2 .box-item1 {
+        background-color: brown;
+      }
+      .box2 .box-item2 {
+        background-color: blueviolet;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 20px;
+      }
+    </style>
   </head>
   <body>
-    <script>
-      console.log(a);
-      var a = 10;
-      console.log(a);
-      p1 = function () {
-        a = 20;
-        console.log(a);
-      };
-      p1();
-      console.log(a);
-    </script>
+    <div class="box1">
+      <div class="box-item1">11111111111</div>
+      <div class="box-item1">22222222222</div>
+      <div class="box-item2">33333333333</div>
+      <div class="box-item2">44444444444</div>
+    </div>
+    <div class="box2">
+      <div class="box-item1">11111111111</div>
+      <div class="box-item2">22222222222</div>
+    </div>
   </body>
 </html>
