@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      header {
+        width: 1200px;
+        height: 42px;
+        background-color: rgb(243, 241, 241);
+        margin: 10px auto;
+        display: flex;
+      }
+      .box1 {
+        width: 250px;
+        margin: 0px, 30px;
+      }
+
+      .box2 {
+        width: 350px;
+        margin: 0px, 30px;
+      }
+      .box2 div {
+        width: 80px;
+        float: left;
+        margin: 0, 30px;
+      }
+      a {
+        text-decoration: none;
+        color: #333333;
+        line-height: 42px;
+      }
+      .box3 {
+        width: 400px;
+        margin: 0px, 30px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      /* 设置搜索框 */
+      form.example input[type="text"] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 60%;
+        background: #f1f1f1;
+      }
+      /* 设置提交按钮 */
+      form.example button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196f3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none; /* 防止双边框 */
+        cursor: pointer;
+      }
+      form.example button:hover {
+        background: #0b7dda;
+      }
+      /* 清除浮动 */
+      form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .box4 {
+        width: 200px;
+      }
+      .box4 img {
+        height: 42px;
+        width: 42px;
+        float: left;
+        border-radius: 100%;
+      }
+      .box4 p {
+        margin-left: 20px;
+        margin-top: 10px;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="box1">
+        <img src="../../img/学成网log.png" alt="" />
+      </div>
+      <div class="box2">
+        <div><a href="">首页</a></div>
+        <div><a href="">课程</a></div>
+        <div><a href="">职业规划</a></div>
+      </div>
+      <div class="box3">
+        <form class="example">
+          <input type="text" placeholder="搜索.." name="search" />
+          <button type="submit"><i class="fa fa-search">搜索</i></button>
+        </form>
+      </div>
+      <div class="box4">
+        <img src="../../img/image.png" alt="" />
+        <p>456789</p>
+      </div>
+    </header>
+  </body>
+</html>
