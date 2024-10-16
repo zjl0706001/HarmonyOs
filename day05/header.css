@@ -1,0 +1,67 @@
+.header .logo{
+    width: 340px;
+    height: 70px;
+    background-color: black;
+    float: left;
+}
+.header .nav{
+    width: 255px;
+    height: 40px;
+    float: left;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.header .nav li{
+    width: 80px;
+    height: 40px;
+
+    float: left;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 40px; 
+}
+.header .nav li:hover{
+    border-bottom: 2px solid tomato;
+}
+/* input */
+.ipt{
+    width: 340px;
+    height: 40px;
+    background-color: red;
+    float: left;
+    margin-top: 15px;
+}
+.ipt .left{
+    width: 300px;
+    height: 40px;
+    background-color: aquamarine;
+    float: left;
+}
+.ipt .right{
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    float: left;
+    text-align: center;
+}
+.ipt .left input{
+    width: 300px;
+    height: 36px;
+    outline: none;
+}
+.ipt .right img{
+    margin-top: 5px;
+}
+.num{
+    width: 200px;
+    height: 40px;
+    /* background-color: blue; */
+    float: right;
+    margin-top: 15px;
+}
+.num img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    vertical-align: middle;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: relative;
+      }
+      div::after {
+        content: "11";
+        position: absolute;
+        right: 100px;
+        bottom: 10px;
+        float: left;
+        width: 20px;
+        height: 20px;
+        background-color: rgb(0, 0, 0);
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <div><img src="./img/image.png" alt="" /></div>
+  </body>
+</html>

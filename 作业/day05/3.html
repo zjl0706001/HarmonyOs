@@ -1,0 +1,57 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 400px;
+        height: 220px;
+        background-color: rgb(136, 132, 132);
+        display: flex;
+      }
+      #boxleft {
+        width: 280px;
+        height: 196px;
+        background-color: rgb(255, 255, 255);
+        margin: 12px;
+        overflow: hidden;
+      }
+      #boxright {
+        width: 95px;
+        height: 196px;
+        background-color: rgb(255, 255, 255);
+        margin: 12px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="boxleft">
+        <img id="img1" src="./img/3/mn1.jpg" alt="" />
+      </div>
+      <div id="boxright"></div>
+    </div>
+  </body>
+  <script>
+    for (let i = 1; i <= 8; i++) {
+      boxright.innerHTML += `
+      <button value="${i}" id="search${i}">
+        <img src="./img/3/c${i}.jpg" alt="" />
+      </butten>`;
+    }
+    const getData = (a) => {
+      document.getElementById(
+        "boxleft"
+      ).innerHTML = `<img src="./img/3/mn${a}.jpg" alt="">`;
+    };
+
+    const searchButtons = document.querySelectorAll('button[id^="search"]');
+    searchButtons.forEach((button) => {
+      button.onclick = function () {
+        getData(this.value);
+      };
+    });
+  </script>
+</html>

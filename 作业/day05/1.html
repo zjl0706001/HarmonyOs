@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 420px;
+        height: 420px;
+        position: relative;
+      }
+      img {
+        position: absolute;
+        left: 100px;
+        bottom: 100px;
+      }
+      div .a:hover {
+        transition: 0.1s;
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="./img/1.png" alt="" />
+      <img class="a" src="./img/2.png" alt="" />
+    </div>
+  </body>
+</html>
