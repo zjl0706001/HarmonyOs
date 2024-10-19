@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #44525b;
+      }
+      .box {
+        width: 450px;
+        margin-top: 100px;
+        margin-left: 0px;
+        animation: hezi 3s infinite;
+        overflow: hidden;
+      }
+
+      img {
+        height: 500px;
+        animation: yazi 1000ms infinite steps(21);
+      }
+      @keyframes yazi {
+        0% {
+          margin-left: 30px;
+        }
+        100% {
+          margin-left: -12600px;
+        }
+      }
+      @keyframes hezi {
+        0% {
+          margin-left: 0px;
+        }
+        100% {
+          margin-left: 1200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <img src="./素材/duck.jpg" alt="" />
+    </div>
+  </body>
+</html>

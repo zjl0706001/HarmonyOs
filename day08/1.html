@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: azure;
+      }
+      .box {
+        width: 100%;
+        height: 80px;
+        margin: 0 auto;
+        font-size: 15px;
+        display: flex;
+      }
+      .box-logo {
+        width: 5%;
+        min-width: 80px;
+        text-align: center;
+        line-height: 80px;
+        font-size: 32px;
+        background-color: #0068b5;
+      }
+      .box-nav {
+        width: 75%;
+        display: flex;
+        background-color: #ffffff;
+      }
+      .box-nav .item {
+        width: 80px;
+        text-align: center;
+        line-height: 80px;
+      }
+      .item[id="0"] {
+        display: none;
+      }
+      .item[id="0"] img {
+        width: 40px;
+      }
+      .item[id="7"] {
+        display: none;
+      }
+      .item[id="8"] {
+        margin-left: auto;
+      }
+      .box-sousuo {
+        width: 20%;
+        min-width: 200px;
+        text-align: center;
+        margin-left: auto;
+        line-height: 80px;
+        background-color: #f3f3f3;
+      }
+      @media screen and (max-width: 1080px) {
+        .item[id="5"],
+        .item[id="6"] {
+          display: none;
+        }
+        .item[id="7"] {
+          display: block;
+        }
+      }
+      @media screen and (max-width: 800px) {
+        .item[id="3"],
+        .item[id="4"] {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 800px) {
+        .item[id="1"],
+        .item[id="2"],
+        .item[id="7"],
+        .box-sousuo {
+          display: none;
+        }
+        .box-nav {
+          width: 95%;
+        }
+        .item[id="0"] {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="box-logo">intel</div>
+      <div class="box-nav">
+        <div class="item" id="0">
+          <img src="./menu.png" alt="" />
+        </div>
+        <div class="item" id="1">产品</div>
+        <div class="item" id="2">支持</div>
+        <div class="item" id="3">解决方案</div>
+        <div class="item" id="4">开发人员</div>
+        <div class="item" id="5">开发伙伴</div>
+        <div class="item" id="6">代工</div>
+        <div class="item" id="7">更多信息+</div>
+        <div class="item" id="8">登录</div>
+      </div>
+      <div class="box-sousuo">搜索</div>
+    </div>
+  </body>
+</html>

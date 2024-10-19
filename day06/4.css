@@ -1,0 +1,50 @@
+/* 菜单的样式 */
+.menu {
+  width: 230px;
+  height: 420px;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 50px 0 0 50px;
+  position: relative;
+}
+
+/* 菜单项的样式 */
+.menu .item {
+  height: 42px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 42px;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+/* 鼠标悬停在菜单项上时的样式 */
+.menu .item:hover {
+  background-color: #ff6700;
+}
+
+/* 右侧二级菜单的样式 */
+.menu .item .nav {
+  width: 500px;
+  height: 460px;
+  background-color: #fff;
+  border: 1px solid #666;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  /* 使元素的总宽度和高度包括内边距和边框，而不是仅计算内容区域的宽度和高度。 */
+  box-sizing: border-box;
+  display: flex;
+  padding: 20px;
+  display: none;
+}
+
+/* 鼠标悬停在二级菜单链接上时的样式 */
+.item .nav a:hover {
+  color: #ff6700;
+}
+
+/* 当菜单项悬停时显示二级菜单 */
+.item:hover .nav {
+  display: flex;
+}

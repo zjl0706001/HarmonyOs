@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #44525b;
+        overflow: hidden;
+      }
+      @keyframes hezi {
+        0% {
+          margin-left: -150px;
+        }
+        100% {
+          margin-left: 1400px;
+        }
+      }
+      div {
+        width: 600px;
+        height: 467px;
+        background-image: url(./素材/duck.jpg);
+        animation: yazi 1s infinite steps(21), hezi 10s infinite;
+      }
+      @keyframes yazi {
+        0% {
+          background-position: 0px 0px;
+        }
+        100% {
+          background-position: -12600px 0px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box" id="content"></div>
+  </body>
+  <script>
+    function getHTML(url, timeout = 20000) {
+      return new Promise((resolve, reject) => {
+        request.get(
+          url,
+          { timeout: timeout },
+          function (error, response, body) {
+            error ? reject("Timeout.\n") : resolve(body);
+          }
+        );
+      });
+    }
+    async function fetchurl(url) {
+      try {
+        const response = await getHTML(url);
+        const data = await response.text();
+        document.getElementById("content").innerHTML = data;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+    const url = "https://www.zhipin.com/chengshi/c101180300/?seoRefer=index";
+    fetchurl(url);
+  </script>
+</html>

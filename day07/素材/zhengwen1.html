@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .beijing{
+        background-image: url(2.jpg);
+        width: 1500px;
+        height: 800px;
+        position: relative;
+    }
+    header{
+        position: absolute;
+        bottom:0px;
+        left:550px;
+    }
+    nav{
+        width: 800px;
+        height: 800px;
+        /* background-color: aquamarine; */
+        position: absolute;
+        left: 350px;
+        top: -30px; 
+        animation: da 5s linear infinite;   
+        
+    }
+    nav img{
+        width: 800px;
+        height: 800px;  
+    }
+    main{
+        position: absolute;
+        top: 250px;
+        left: 450px;
+    }
+    footer{
+        width: 800px;
+        height: 800px;
+        position: absolute;
+        left: 350px;
+        top: -30px; 
+        animation: da 5s linear infinite;    
+          
+    }
+    footer img:nth-child(1){
+        position: absolute;
+        top:20px;
+        left: 320px;
+        transform-origin:50% 0;
+        animation: xiao 5s linear infinite;  
+    }
+    footer img:nth-child(2){
+        position: absolute;
+        top:200px;
+        left: 680px;
+        transform-origin:50% 0;
+        animation: xiao 5s linear infinite;  
+    }
+    footer img:nth-child(3){
+        position: absolute;
+        top:220px;
+        left: 30px;
+        transform-origin:50% 0;
+        animation: xiao 5s linear infinite;  
+    }
+    footer img:nth-child(4){
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top:500px;
+        left: 30px;
+        transform-origin:50% 20%;
+        animation: xiao 5s linear infinite;  
+    }
+    footer img:nth-child(5){
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top:700px;
+        left: 300px;
+        transform-origin:50% 20%;
+        animation: xiao 5s linear infinite;  
+    }
+    footer img:nth-child(6){
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        top:500px;
+        left: 600px;
+        transform-origin:50% 20%;
+        animation: xiao 5s linear infinite;  
+    }
+
+    @keyframes da{
+        0%{
+
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+
+    }
+    @keyframes xiao{
+        0%{
+
+        }
+        100%{
+            transform: rotate(-360deg);
+        }
+
+    }
+
+
+    </style>
+</head>
+<body>
+   <div class="beijing"></div>
+
+   <header>
+    <img src="bracket.png"></header>
+    <nav><img src="fsw.png"></nav>
+
+    <footer><img src="girl.png">
+        <img src="girl.png">
+        <img src="girl.png">
+        <img src="./girls.png">
+        <img src="./girls.png">
+        <img src="./girls.png">
+    
+    
+    
+    </footer>
+    <main><img src="big-title.png"></main>
+
+
+
+
+    
+</body>
+</html>

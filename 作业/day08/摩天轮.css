@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #0a003c;
+}
+.box {
+  width: 1280px;
+  height: 800px;
+  margin: 100px auto;
+  background-color: antiquewhite;
+  position: relative;
+}
+.zhijia {
+  position: absolute;
+  top: 280px;
+  left: 35.6%;
+}
+.center {
+  position: absolute;
+  top: -100px;
+  left: 20%;
+  animation-name: mover1;
+
+  animation-duration: 10s;
+}
+.boy {
+  position: absolute;
+  top: 90px;
+  left: 10%;
+  animation-name: mover2;
+  animation-duration: 10s;
+}
+.dog {
+  position: absolute;
+  top: 86px;
+  left: 77%;
+  animation-name: mover2;
+  animation-duration: 10s;
+}
+.girl {
+  position: absolute;
+  top: 20px;
+  left: 42%;
+  animation-name: mover2;
+  animation-duration: 10s;
+}
+@keyframes mover1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes mover2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
