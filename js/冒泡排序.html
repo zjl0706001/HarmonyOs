@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 正向冒泡排序
+    const buubleSort1 = function (arr) {
+      var len = arr.length;
+      for (var i = 0; i < len - 1; i++) {
+        for (var j = 0; j < len - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            var temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+    };
+    // 逆向冒泡排序
+    const buubleSort2 = function (arr) {
+      var len = arr.length;
+      for (var i = 0; i < len - 1; i++) {
+        for (var j = len - 1; j > i; j--) {
+          if (arr[j] < arr[j - 1]) {
+            var temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
+          }
+        }
+      }
+    };
+    var num = [];
+    for (var i = 0; i < 10; i++) {
+      num.push(Math.floor(Math.random() * 100));
+    }
+    document.write(num);
+    buubleSort2(num);
+    document.write("<br>");
+    document.write(num);
+  </script>
+</html>

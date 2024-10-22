@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 最小值写法
+    const minSelectionSort = function (arr) {
+      for (let i = 0; i < arr.length - 1; i++) {
+        let min = i;
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[j] < arr[min]) {
+            min = j;
+          }
+        }
+        [arr[i], arr[min]] = [arr[min], arr[i]];
+      }
+    }; // 最大值写法
+    const maxSelectionSort = function (arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        let max = i;
+        for (let j = 0; j < i; j++) {
+          if (arr[j] > arr[max]) {
+            max = j;
+          }
+        }
+        [arr[i], arr[max]] = [arr[max], arr[i]];
+      }
+    };
+
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+      arr.push(Math.floor(Math.random() * 100));
+    }
+    document.write(arr);
+    document.write("<br>");
+    maxSelectionSort(arr);
+    document.write(arr);
+  </script>
+</html>

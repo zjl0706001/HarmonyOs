@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var check = function (arr, t) {
+      var l = -1,
+        r = arr.length,
+        mid;
+      while (l + 1 < r) {
+        mid = Math.floor((l + r) / 2);
+        if (arr[mid] <= t) {
+          l = mid;
+        } else r = mid;
+      }
+      return r;
+    };
+    var findTheDistanceValue = function (arr1, arr2, d) {
+      arr1.sort((a, b) => a - b);
+      arr2.sort((a, b) => a - b);
+      var ans = 0;
+      for (let x in arr1) {
+        if (
+          check(arr2, arr1[x] - d) == check(arr2, arr1[x] + d) &&
+          arr1[x] - d != arr2[check(arr2, arr1[x]) - 1]
+        ) {
+          ans++;
+        }
+      }
+      return ans;
+    };
+    var arr1 = [-3, 0, 2, 8, 10, 10],
+      arr2 = [-9, -9, -8, -4, -1],
+      d = 9;
+    document.write(findTheDistanceValue(arr1, arr2, d));
+  </script>
+</html>

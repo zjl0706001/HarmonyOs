@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var years = prompt("请输入年份：");
+      if ((years % 4 == 0 && years % 100 != 0) || years % 400 == 0) {
+        alert("是闰年");
+      } else {
+        alert("是平年");
+      }
+    </script>
+  </body>
+</html>

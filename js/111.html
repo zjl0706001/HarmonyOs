@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const getdata = async () => {
+      const url = "https://api.tf2sc.cn/api/tfcar/website/allNews";
+      const resp = await fetch(url, {
+        headers: {
+          platformtype: "h5",
+        },
+      });
+      const data = await resp.json();
+      console.log(data);
+      for (i in data.data) {
+        document.write(data.data[i].title + "<br>");
+      }
+    };
+    getdata();
+  </script>
+</html>
