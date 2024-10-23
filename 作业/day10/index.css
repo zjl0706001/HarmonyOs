@@ -1,0 +1,412 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  /* min-width: 1000px; */
+  height: 600vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  /* overflow: hidden; */
+}
+/* box1 */
+.box1 {
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.box1 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box1 .img1 {
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+}
+.box1 .img2 {
+  width: 11%;
+  position: absolute;
+  top: 6%;
+  right: 6%;
+}
+.box1 .img3 {
+  width: 12%;
+  position: absolute;
+  top: 2%;
+  left: 10%;
+}
+.box1 .img4 {
+  width: 14%;
+  position: absolute;
+  top: 90%;
+  right: 65%;
+}
+.box1 .img5 {
+  width: 14%;
+  position: absolute;
+  top: 90%;
+  right: 50%;
+}
+.box1 .img6 {
+  width: 14%;
+  position: absolute;
+  top: 90%;
+  right: 35%;
+}
+.box1 .img7 {
+  width: 14%;
+  position: absolute;
+  top: 90%;
+  right: 20%;
+}
+.box1 .img8 {
+  width: 5%;
+  position: absolute;
+  top: 84%;
+  right: 7%;
+}
+.box1 .img9 {
+  width: 15%;
+  position: absolute;
+  top: 78%;
+  right: 44%;
+}
+.box1 .img10 {
+  width: 3%;
+  position: absolute;
+  top: 78%;
+  right: 44%;
+}
+/* box2 */
+.box2 {
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.box2 .img1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box2 .img2,
+.img21 {
+  width: 18%;
+  position: absolute;
+  top: 34%;
+  right: 19%;
+}
+.box2 .img21 {
+  display: none;
+}
+.box2 .item1:hover .img2 {
+  display: none;
+}
+.box2 .item1:hover .img21 {
+  display: block;
+}
+.box2 .img3,
+.img31 {
+  width: 18%;
+  position: absolute;
+  top: 34%;
+  right: 42%;
+}
+.box2 .img31 {
+  display: none;
+}
+.box2 .item2:hover .img3 {
+  display: none;
+}
+.box2 .item2:hover .img31 {
+  display: block;
+}
+.box2 .img4,
+.img41 {
+  width: 18%;
+  position: absolute;
+  top: 34%;
+  right: 65%;
+}
+.box2 .img41 {
+  display: none;
+}
+.box2 .item3:hover .img4 {
+  display: none;
+}
+.box2 .item3:hover .img41 {
+  display: block;
+}
+/* box3 */
+.box3 {
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.box3 .img1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box3 .img2 {
+  width: 24%;
+  position: absolute;
+  top: 5%;
+  right: 38%;
+}
+.box3 .img3 {
+  width: 22%;
+  position: absolute;
+  top: 25%;
+  right: 58%;
+}
+.box3 .img4 {
+  width: 6%;
+  position: absolute;
+  top: 28%;
+  right: 58%;
+}
+.box3 .img5 {
+  width: 17%;
+  position: absolute;
+  top: 57%;
+  right: 65%;
+}
+.box3 .img6 {
+  width: 17%;
+  position: absolute;
+  top: 55%;
+  right: 47%;
+}
+.box3 .img71 {
+  width: 30%;
+  position: absolute;
+  top: 15%;
+  right: 18%;
+}
+.box3 .img81 {
+  width: 8%;
+  position: absolute;
+  top: 75%;
+  right: 75%;
+}
+.box3 .img82 {
+  width: 8%;
+  position: absolute;
+  top: 74%;
+  right: 67%;
+}
+.box3 .img83 {
+  width: 8%;
+  position: absolute;
+  top: 73%;
+  right: 59%;
+}
+/* box4 */
+.box4 {
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.box4 video {
+  width: 49%;
+  position: absolute;
+  top: 20.5%;
+  right: 17.3%;
+  z-index: 1;
+}
+.box4 .img1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box4 .img2 {
+  width: 24%;
+  position: absolute;
+  top: 5%;
+  right: 38%;
+}
+.box4 .img3 {
+  width: 48%;
+  position: absolute;
+  top: 12%;
+  right: 56%;
+  z-index: 1;
+}
+.box4 .img4 {
+  width: 54%;
+  position: absolute;
+  top: 16%;
+  right: 14%;
+}
+.box4 .img5 {
+  width: 34%;
+  position: absolute;
+  top: 76%;
+  right: 28%;
+}
+.box4 .img6 {
+  width: 36%;
+  position: absolute;
+  top: 52.2%;
+  right: -10%;
+  z-index: 1;
+}
+/* box5 */
+.box5 {
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.box5 .img1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box5 .img2 {
+  width: 30%;
+  position: absolute;
+  top: 5%;
+  right: 35%;
+}
+.box5 .img3 {
+  width: 70%;
+  position: absolute;
+  top: 12%;
+  right: 15%;
+}
+.box5 .img4 {
+  width: 24%;
+  position: absolute;
+  top: 55%;
+  right: 28%;
+}
+.box5 .img51 {
+  width: 8%;
+  position: absolute;
+  top: 30%;
+  right: 45%;
+  z-index: 0;
+}
+.box5 .img52 {
+  width: 8%;
+  position: absolute;
+  top: 30%;
+  right: 45%;
+  z-index: 0;
+}
+.box5 .img61 {
+  width: 8%;
+  position: absolute;
+  top: 37%;
+  right: 38%;
+}
+.box5 .img62 {
+  width: 8%;
+  position: absolute;
+  top: 37%;
+  right: 38%;
+}
+.box5 .img71 {
+  width: 8%;
+  position: absolute;
+  top: 30%;
+  right: 31%;
+}
+.box5 .img72 {
+  width: 8%;
+  position: absolute;
+  top: 30%;
+  right: 31%;
+}
+.box5 .img81 {
+  width: 8%;
+  position: absolute;
+  top: 37%;
+  right: 24%;
+}
+.box5 .img82 {
+  width: 8%;
+  position: absolute;
+  top: 37%;
+  right: 24%;
+}
+/* box6 */
+.box6 {
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.box6 .img1 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.box6 .img2 {
+  width: 30%;
+  position: absolute;
+  top: 5%;
+  right: 35%;
+}
+.box6 .img31 {
+  width: 5%;
+  position: absolute;
+  top: 40%;
+  right: 75%;
+}
+.box6 .img32 {
+  width: 5%;
+  position: absolute;
+  top: 40%;
+  right: 20%;
+}
+.box6 .center {
+  width: 44%;
+  height: 50%;
+  /* background-color: aliceblue; */
+  position: absolute;
+  top: 22%;
+  right: 28%;
+}
+.box6 .center .lunbotu {
+  width: 100%;
+  height: 90%;
+}
+.box6 .center .bottom {
+  width: 60%;
+  height: 4%;
+  margin: 2% auto;
+  display: flex;
+  /* background-color: rgb(93, 112, 128); */
+}
+.box6 .center .bottom img {
+  margin: 0% auto;
+}
+.box6 .box6-item {
+  height: 20%;
+  width: 100%;
+  padding: 0 25%;
+  position: absolute;
+  bottom: 0%;
+  display: flex;
+}
+.box6 .box6-item .img-item {
+  margin: 0 3%;
+}
+.box6 .box6-item .img-item img {
+  width: 80%;
+}
