@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+#root {
+  width: 100%;
+  display: flex;
+  height: 100vh;
+}
+.root-left {
+  box-sizing: border-box;
+  width: 160px;
+  height: 100vh;
+  border-right: 1px solid #dadfe6;
+}
+.root-left:hover {
+  /* width: 160px; */
+  min-width: 160px;
+}
+/* .root-left:hover .root-left-body .nav-item .item-title .item-doc {
+  display: block;
+} */
+.root-left-top {
+  height: 50px;
+  position: sticky;
+  top: 0px;
+  background-color: #ffffff;
+  box-shadow: 0px 6px 8px -9px #888888;
+}
+.root-left-top img {
+  margin: 15px 0 15px 20px;
+  height: 25px;
+  width: 25px;
+}
+.root-left-body {
+  padding-left: 8px;
+  /* padding-right: 0.2%; */
+  height: calc(100% - 50px);
+  padding-right: 20px;
+  overflow-y: auto;
+  overflow: hidden;
+}
+.root-left-body:hover {
+  overflow: auto;
+}
+/* 自定义滚动条样式 */
+.root-left-body::-webkit-scrollbar {
+  width: 6px;
+}
+.root-left-body::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+.root-left-body::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 5px;
+}
+.root-left-body .nav-item {
+  margin: 10px 0;
+}
+.root-left-body .nav-item .item-title {
+  height: 40px;
+  width: 110px;
+  line-height: 40px;
+  /* background-image: linear-gradient(to right, #55b3e2, #0076f5); */
+  padding: 0 15px;
+  border-radius: 20px;
+  color: #333333;
+  display: flex;
+}
+.root-left-body .nav-item .item-title img {
+  height: 22px;
+  margin-top: 8px;
+}
+.root-left-body .nav-item .item-title .item-doc {
+  padding-left: 6px;
+  display: block;
+}
+.root-left-body .nav-item .items ul {
+  text-align: left;
+  padding-left: 40px;
+  color: #666666;
+  line-height: 30px;
+  display: none;
+  font-size: 14px;
+}
+.root-left-body .nav-item .items ul li {
+  color: #666666;
+}
+.root-left-body .nav-item .items ul li:hover {
+  color: #0c8cf6;
+}
+
+.root-right {
+  width: calc(100% - 160px);
+  overflow-y: auto;
+}
+.right-top {
+  height: 70px;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+.right-top .top-left {
+  width: 55%;
+  display: flex;
+}
+.right-top .top-left .logo {
+  height: 52%;
+  margin-top: 15px;
+}
+.right-top .top-left .search {
+  height: 30px;
+  width: 310px;
+  margin-left: 30px;
+  margin-top: 18px;
+  border-radius: 6px;
+  display: flex;
+  border: #9acefb 1.2px solid;
+  background-color: #0086f6;
+}
+.right-top .top-left .search input {
+  box-sizing: border-box;
+  width: 260px;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 14px;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+}
+.right-top .top-left .search a img {
+  margin: 5.4px 0 0 15px;
+  width: 20px;
+}
+.right-top .top-right {
+  width: 45%;
+  display: flex;
+}
+.right-top .top-right .right-nav {
+  margin: auto 15px;
+}
+.right-top .top-right .right-nav img {
+  width: 80%;
+  margin-top: 4px;
+}
+.right-body {
+  height: 2000px;
+  width: 1200px;
+  margin: 10px auto;
+  display: flex;
+}
+.right-body .body-left {
+  width: 64%;
+  background-color: #ababab;
+}
+.right-body .body-right {
+  padding: 0 10px;
+  width: 36%;
+  height: 800px;
+  position: sticky;
+  top: 10px;
+}
+.right-body .body-right .right-lunbo {
+  color: #f9fbfd;
+  position: relative;
+}
+.right-body .body-right .right-lunbo .xuanze {
+  display: flex;
+  position: absolute;
+  top: 90px;
+  left: 22px;
+}
+.right-body .body-right .right-lunbo .xuanze div {
+  min-width: 10px;
+  text-align: center;
+}
+.right-body .body-right .right-lunbo .xuanze div img {
+  width: 35px;
+}
+.right-body .body-right .right-lunbo .lunboin {
+  width: 100%;
+  border-radius: 10px;
+}
+.right-body .body-right .right-lunbo .bangdan {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.right-body .body-right .right-lunbo .bangdan-title {
+  position: absolute;
+  top: 12px;
+  left: -210px;
+}
+.right-body .body-right .right-lunbo .bangdan-title div {
+  margin-top: 5px;
+}
+.right-body .body-right .right-lunbo .bangdan-title div:last-child {
+  font-size: 13px;
+}
+.right-body .body-right .right-lunbo .bangdan .item {
+  width: 180px;
+  height: 60px;
+  display: flex;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #ffffff31;
+}
+.right-body .body-right .right-lunbo .lunboon {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.right-body .body-right .right-lunbo .bangdan-info {
+  margin-top: 5px;
+  margin-left: 6px;
+}
+.right-body .body-right .right-lunbo .info-doc {
+  font-size: 14px;
+  margin-top: 4px;
+}
+.right-body .body-right .box-right-down img {
+  width: 100%;
+  margin-top: 20px;
+}
+.right-bottom {
+  height: 700px;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  background-color: #0086f6;
+}
