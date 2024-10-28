@@ -1,48 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>地图示例</title>
   </head>
-  <body></body>
-  <script>
-    const headers = {
-      ":authority": "m.ctrip.com",
-      ":method": "POST",
-      ":path":
-        "/restapi/soa2/22370/getRecommendHotelList?_fxpcqlniredt=09031029418334888871&x-traceID=09031029418334888871-1729903885395-1246195",
-      ":scheme": "https",
-      accept: "*/*",
-      "accept-encoding": "gzip, deflate, br, zstd",
-      "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
-      "content-length": "355",
-      "content-type": "application/json",
-      cookie:
-        "UBT_VID=1729817864591.9fc1YSXbBfKO; GUID=09031029418334888871; MKT_CKID=1729817865020.zkckv.i0xl; _ga=GA1.1.169605783.1729817865; _RSG=vfqZZoyScbE07AQZbiRtvA; _RDG=288626c619574a205c3e0b8e7e7a8f6fe7; _RGUID=e96673cc-a38f-4a79-ae77-6ec96368a1c0; MKT_Pagesource=PC; ibulanguage=CN; ibulocale=zh_cn; cookiePricesDisplayed=CNY; nfes_isSupportWebP=1; StartCity_Pkg=PkgStartCity=507; Session=smartlinkcode=U130727&smartlinklanguage=zh&SmartLinkKeyWord=&SmartLinkQuary=&SmartLinkHost=; Union=AllianceID=4902&SID=130727&OUID=&createtime=1729903610&Expires=1730508409922; _RF1=42.233.3.106; Hm_lvt_a8d6737197d542432f4ff4abc6e06384=1729817864,1729823587,1729903613; HMACCOUNT=894CD3A3F6012FEC; _ubtstatus=%7B%22vid%22%3A%221729817864591.9fc1YSXbBfKO%22%2C%22sid%22%3A7%2C%22pvid%22%3A5%2C%22pid%22%3A0%7D; _bfaStatusPVSend=1; _bfaStatus=send; manualclose=1; _bfa=1.1729817864591.9fc1YSXbBfKO.1.1729903647268.1729903654733.7.8.102001; _ga_B77BES1Z8Z=GS1.1.1729903619.9.1.1729903654.25.0.0; _ga_5DVRDQD429=GS1.1.1729903619.9.1.1729903654.0.0.0; _ga_9BZF483VNQ=GS1.1.1729903620.9.1.1729903655.0.0.0; _jzqco=%7C%7C%7C%7C%7C1.620252743.1729817865036.1729903647444.1729903655020.1729903647444.1729903655020.0.0.0.38.38; Hm_lpvt_a8d6737197d542432f4ff4abc6e06384=1729903655",
-      cookieorigin: "https://www.ctrip.com",
-      origin: "https://www.ctrip.com",
-
-      referer: "https://www.ctrip.com/",
-      "sec-ch-ua":
-        '"Chromium";v="130", "Microsoft Edge";v="130", "Not?A_Brand";v="99"',
-      "sec-ch-ua-mobile": "?0",
-      "sec-ch-ua-platform": '"Windows"',
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-site",
-      "user-agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0",
-    };
-
-    const getData = async () => {
-      url =
-        "https://m.ctrip.com/restapi/soa2/22370/getRecommendHotelList?_fxpcqlniredt=09031029418334888871&x-traceID=09031029418334888871-1729903655223-9567721";
-
-      const res = await fetch(url, headers);
-      const data = await res.json();
-      console.log(data);
-    };
-    getData();
-  </script>
+  <body>
+    <script>
+      var a = 6;
+      var b = "9a2";
+      alert(a > b);
+    </script>
+  </body>
 </html>

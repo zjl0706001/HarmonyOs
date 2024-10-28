@@ -1,0 +1,119 @@
+[TOC]
+
+
+
+#### 变量
+
+==var==是JS关键字，用来声明变量（variable是变量的意思）
+
+```js
+var kname = "旗木卡卡西";
+var age = 30;
+var post = 'kakaxi@itcast.cn';
+var local = "木叶村";
+var wage = 2000;
+document.write(kname + age + post + local + wage);
+```
+
+
+
+##### 可以同时声明多个变量
+
+第一个变量结束后加==逗号==，然后声明第二个变量，直到结束再加==分号==
+
+可以如下换行声明，结构美观
+
+```js
+var kname = "旗木卡卡西",
+    age = 20,
+    post = 'kakaxi@itcast.cn';
+```
+
+
+
+##### 声明变量的四种情况
+
++ 不声明
++ 声明不赋值
++ 赋值不声明
++ 声明且赋值
+
+**不声明**
+
+```js
+document.write(xx);
+```
+
+```
+报错//用write是不显示的，可以用console.log
+```
+
+**声明不赋值**
+
+```js
+var xx;
+document.write(xx);
+```
+
+```
+undefined//未定义的
+```
+
+**赋值不声明**
+
+此时是可以使用的，但是不提倡，因为不声明赋值会导致其变为全局变量
+
+```js
+xx = "你好";
+document.write(xx);
+```
+
+```
+你好
+```
+
+**声明且赋值**
+
+```js
+var xx = "你好";
+document.write(xx);
+```
+
+```
+你好
+```
+
+
+
+##### 变量命名规范
+
++ 由字母（A-z）、数字（0-9）、下划线（_）、美元符号（$）组成
++ 不能以数字开头
++ 严格区分大小写
++ 中间不能有空格→my  age
++ 不能使用关键字、保留字，特殊：name，虽然不是关键字也不是保留字，但是在浏览器中有特殊的含义
++ 变量名必须有意义，比如年龄→不能是nl，而是age
++ 驼峰命名法，首字母小写，后续单词首字母大写→myNewSchool
+
+
+
+#####  为两个变量交换值
+
+```js
+var a = 1;
+var b = 2;
+var temp;
+temp = a;
+a = b;
+b = temp;
+document.write("a当前值为",a);
+document.write("      ");
+document.write("b当前值为",b);
+```
+
+不像pytohn那样
+
+```python
+a,b = b,a;//就可以交换完成
+```
+

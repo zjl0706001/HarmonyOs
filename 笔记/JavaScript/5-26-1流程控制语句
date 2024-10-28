@@ -1,0 +1,132 @@
+[TOC]
+
+
+
+#### if语句
+
+案例1
+
+```js
+if (1<2) {
+    document.write('你好');
+}
+```
+
+案例2
+
+```js
+if (1<2) {
+    document.write('你好');
+} else {
+    document.write('你不好');
+}
+```
+
+案例3
+
+判断年份是平年闰年
+
+```js
+var age = prompt('请输入年份');
+if (age % 4 == 0 && age % 100 != 0) {
+    alert(age+'是闰年');
+}else if (age % 400 == 0) {
+    alert(age+'是闰年');
+} else {
+    alert(age+'是平年');
+}
+```
+
+
+
+#### 三元运算符
+
+==语法结构：== 条件表达式 ？ 表达式1 : 表达式2
+
+条件表达式，为真则返回表达式1，为假则返回表达式2
+
+案例1——为真执行前者，为假执行后者
+
+```js
+1 > 2 ? document.write('你好') : document.write('你不好');
+//结果为你不好
+```
+
+案例2——为真返回前者，为假返回后者
+
+```js
+var text;
+text = 1 < 2 ? '他好' : '他不好';
+document.write(text);
+//结果为他好
+```
+
+
+
+#### switch语句
+
+==语法结构：==
+
+```js
+switch (值/变量) {
+    case 值/变量:
+        表达式;
+        break;//退出语句，不设置break将会执行下一个case
+    case 值/变量:
+        表达式;
+        break;
+    default:
+        表达式;//当switch里的值没有一个匹配的上时就执行default
+}
+```
+
+案例1
+
+```js
+var num = prompt('请输入一个数');
+switch (num) {
+    case '1':
+        document.write('这是1');
+        break;
+    case 2:
+        document.write('这是2');
+        break;
+    case 3:
+        document.write('这是3');
+        break;
+    case 4:
+        document.write('这是4');
+        break;
+    case 5:
+        document.write('这是5');
+        break;
+}
+```
+
+当switch里面的值与case后面的值匹配时，就会执行case后面的语句，需要注意的是，在本案例里，对输入进来的数没有进行强转，所以只有输入为1时才能执行，因为1是字符型，而其他的case全是整型。
+
+案例2
+
+```js
+var num = prompt('请输入要查询的水果');
+switch (num) {
+    case '苹果':
+        document.write('苹果3.5元一斤');
+        break;
+    case '香蕉':
+        document.write('香蕉2块钱一斤');
+        break;
+    case '榴莲':
+        document.write('榴莲50元一斤');
+        break;
+    case '香梨':
+        document.write('香梨5块钱一斤');
+        break;
+    case '椰子':
+        document.write('椰子10块钱一个');
+        break;
+    default:
+        document.write('没有'+num);
+}
+```
+

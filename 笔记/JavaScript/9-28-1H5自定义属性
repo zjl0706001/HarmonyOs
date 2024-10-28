@@ -1,0 +1,90 @@
+#### 为什么使用自定义属性
+
+比如上个案例的index属性，是为了保存并使用数据，有些数据可以保存在页面中而不用保存在数据库中
+
+**有些自定义属性容易引起歧义，不确定是自定义属性还是内置属性**
+
+```html
+<div hello="20"></div>
+<script>
+var div = document.querySelector('div');
+console.log(div.hello);//做法是错的，自定义属性只能通过get获取
+console.log(div.getAttribute('hello'));//正确做法
+</script>
+```
+
+**所以H5规定，自定义属性要以==data-==作为属性名开头并且赋值**
+
+比如
+
+```html
+<div data-hello='20'></div>
+```
+
+#### H5新增的自定义属性获取方法(只能获取data-开头的)
+
+**方式1：**==element.dataset.自定义属性==   //记得去掉data-
+
+**方式2：**==element.dataset['自定义属性']==   //记得去掉data-
+
+```html
+<div data-hello="20"></div>
+<script>
+var div = document.querySelector('div');
+
+//H5新增方法
+console.log(div.dataset.hello);
+</script>
+```
+
+**注意：**dataset是一个==集合==，里面存放了以data-开头的自定义属性
+
+```js
+var div = document.querySelector('div');
+console.log(div.dataset);
+```
+
+既然是集合，除了上述的div.dataset.hello方式，还可以
+
+```html
+<div data-hello="20"></div>
+<script>
+var div = document.querySelector('div');
+
+//H5新增方法
+console.log(div.dataset['hello']);
+</script>
+```
+
+#### 连续英文的自定义属性该如何获取
+
+例如
+
+```html
+<div data-hello-world="20"></div>
+```
+
+如果是==get方式==，则
+
+```js
+div.getAttribute('data-hello-world');
+```
+
+如果是==dataset方式==，则
+
+```js
+div.dataset.helloWorld
+```
+
+**将hello-world改成以驼峰命名法形式的连续英文**，索引形式获取同理
+
+```js
+div.dataset['helloWorld']
+```
+
+
+
+#### H5新增与get方法的区别
+
++ get任意获取，没有兼容性问题
++ dataset只兼容ie 11以上，而且==只支持获取data-开头的自定义属性==

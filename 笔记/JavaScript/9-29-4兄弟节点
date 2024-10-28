@@ -1,0 +1,32 @@
+#### 兄弟节点——不常用
+
+==node.nextSibling==——下一个兄弟节点，包含元素节点、文本节点，找不到返回null
+
+==node.previousSibling==——上一个兄弟节点，包含元素节点、文本节点，找不到返回null
+
+```html
+<body>
+    <div>我是div</div>
+    <span>我是span</span>
+    <script>
+        var div = document.querySelector('div');
+        console.log(div.nextSibling);//输出的是文本节点，因为nextSibling也包括元素节点，文本节点，而div后面是一个换行
+    </script>
+</body>
+```
+
+#### 兄弟节点——常用
+
+**只获取元素节点的兄弟节点**
+
+==node.nextElementSibling==——下一个兄弟节点，只选元素节点，找不到返回null
+
+==node.previousElementSibling==——上一个兄弟节点，只选元素节点，找不到返回null
+
+**注意：**存在兼容性问题，仅在IE9以上支持
+
+
+
+#### 解决办法
+
+自己封装一个函数，里面使用node.nextSibling，然后利用nodeType进行筛选元素节点，最后返回找到的节点，找不到返回null

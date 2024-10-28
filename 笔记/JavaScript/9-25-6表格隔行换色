@@ -1,0 +1,127 @@
+新的鼠标事件
+
+==鼠标经过——onmouseover==
+
+==鼠标离开——onmouseout==
+
+有一个表格table，第一行设为表头（thead），下面设为tbody，只有在tbody里才会变色
+
+核心思路：鼠标经过tr行时，当前行变背景颜色，鼠标离开时去掉当前的背景颜色
+
+```html
+    <style>
+        table {
+            width: 800px;
+            margin: 100px auto;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        thead tr {
+            height: 30px;
+            background-color: skyblue;
+        }
+
+        tbody tr {
+            height: 30px;
+        }
+
+        tbody td {
+            border-bottom: 1px solid #d7d7d7;
+            font-size: 12px;
+            color: blue;
+        }
+
+        /*设置一个新的类名，里面存放一个背景颜色样式，为鼠标经过时使用*/
+        .bg {
+            background-color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>代码</th>
+                <th>名称</th>
+                <th>最新公布净值</th>
+                <th>累计净值</th>
+                <th>前单位净值</th>
+                <th>净值增长率</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>231</td>
+                <td>213</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>231</td>
+                <td>213</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>231</td>
+                <td>213</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>231</td>
+                <td>213</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>231</td>
+                <td>213</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+            <tr>
+                <td>231</td>
+                <td>213</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+                <td>123</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        //获取元素 获取的是tbody里面所有的行
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        //利用循环注册事件
+        for (var i = 0; i < trs.length; i++) {
+            trs[i].onmouseover = function() {
+                //console.log('你好');
+                //this.className = 'bg';//上面关于背景色的类名，下面也要是关于背景色的类，或者取消类
+                this.style.backgroundColor = 'tomato';//上面是直接设置颜色，下面也要是直接设置颜色
+            }
+            trs[i].onmouseout = function() {
+                //this.className = '';
+                this.style.backgroundColor = '#fff';
+            }
+        }
+        //两个事件都要弄在for循环里，因为每个行都要设置鼠标经过和离开事件
+        //鼠标经过为tr设置一个关于背景色的css类，鼠标消失时再将其类取消
+        //不要设置类，然后消失时设置颜色，因为style.backgroungColor是行内式，优先级高
+
+    </script>
+    </body>
+```
+

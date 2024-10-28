@@ -39,6 +39,7 @@ const onClickItemTitle = () => {
     };
   });
 };
+var kkkk = true;
 // 点击左上角图片的事件
 select(`.root-left-top img`).onclick = () => {
   const rootLeft = select(`.root-left`);
@@ -62,6 +63,7 @@ select(`.root-left-top img`).onclick = () => {
 onClickItemTitle();
 // 轮播图
 let newLunboId = 1,
+  lunboid = 1,
   timer;
 const lunboImages = selectAll(".right-lunbo .xuanze div img");
 lunboImages.forEach((item, index) => {
@@ -78,6 +80,19 @@ const startLoop = () => {
   timer = setInterval(() => {
     const nextIndex = (newLunboId % lunboImages.length) + 1;
     lunboImages[nextIndex - 1].click();
+    select(".item2 img").src = `./img/lunbo${(lunboid++ % 3) + 1}.png`;
   }, 5000);
 };
+const startLoop1 = () => {
+  setInterval(() => {
+    select(".item2 img").src = `./img/lunbo${(lunboid++ % 3) + 1}.png`;
+  }, 10000);
+};
 startLoop();
+startLoop1();
+// 加载地图
+var map = new AMap.Map("mapContainer", {
+  zoom: 15,
+  center: [113.921388, 35.255645],
+  resizeEnable: true,
+});

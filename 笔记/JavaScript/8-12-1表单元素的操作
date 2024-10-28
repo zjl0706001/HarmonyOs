@@ -1,0 +1,129 @@
+#### 表单元素的属性操作
+
+==不能再用innerText修改表单里的，而是有专属的属性value==
+
+利用DOM可以操作以下表单元素的属性：
+
+type、value、checked、selected、disabled
+
+##### value
+
+点击按钮更改表单的value值，如果是调用innerHTML是没用的
+
+```html
+<body>
+    <button>按钮</button>
+    <input type="text" value="输入内容">
+    
+    <script>
+        //1.获取元素
+        var btn = document.querySelector('button');
+        var input = document.querySelector('input');
+        //2.注册事件、处理程序
+        btn.onclick = function() {
+            input.innerHTML = '被点击了';//这个是普通盒子，比如div标签里面的内容
+            input.value = '被点击了';//表单修改内容要用value
+            //想要表单被禁用，不能再被点击，用到dissabled属性
+            //btn.disabled = true;//方法一
+            this.disabled = true;//方法二，效果同上，更简单
+            //this指向的是事件函数的调用者，即btn.onclick的btn
+        }
+    
+    </script>
+    </body>
+```
+
+##### disabled
+
+想要某个表单被禁用，不能再点击，则使用disabled
+
+**使表单无法再被输入**
+
+```
+input.disabled = 'true';
+```
+
+**使表单无法再被点击**
+
+this表示的是函数的调用者，即==btn==
+
+```
+this.disabled = 'true';
+```
+
+
+
+#### 案例：仿京东显示密码
+
+![image-20220911204848155](D:\TyporaWorks\图片文件夹存放\image-20220911204848155.png)
+
+##### 思路：
+
+![image-20220911205001646](D:\TyporaWorks\图片文件夹存放\image-20220911205001646.png)
+
+
+
+布局思路：
+
+设置一个div，然后里面一个input，再把小眼睛定位到右边位置，子绝父相，为div位置相对定位
+
+```html
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            border-bottom: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .box input {
+            width: 370px;
+            height: 30px;
+            border: 0;
+            outline: none;
+        }
+
+        .box img {
+            position: absolute;
+            top: 4px;
+            right: 3px;
+            width: 24px;
+            width: 24px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <label for="">
+            <img src="image\spring.jpg" alt="" id="eye">
+        </label>
+        <input type="password" name="" id="pwd">
+    </div>
+    
+    <script>
+        //1.获取元素
+        var eye = document.getElementById('eye');
+        var pwd = document.getElementById('pwd');
+        var xxbb = 1;//设置一个初始变量
+        //2.注册事件 处理程序
+        //眼睛点击事件，把密码框的密码属性改成文本属性
+        eye.onclick = function() {
+            if (xxbb == 1) {//变量为1时，修改成文本框，图片睁开眼
+                pwd.type = 'text';
+                eye.src = 'image/winter.jpg';
+                xxbb = 0;//事件结束后赋值为初始值的对立面，即0
+                
+            } else {//当变量为0时，修改为密码框，眼睛闭上
+                pwd.type = 'password';
+                eye.src = 'image/spring.jpg';
+                xxbb = 1;//事件结束后变量赋值为1
+            }
+             
+        }
+        
+    </script>
+    </body>
+```
+

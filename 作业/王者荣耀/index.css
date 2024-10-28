@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  position: relative;
+}
+#page1 {
+  background-image: url(./img/page1/bg.png);
+  background-size: cover;
+}
+#page1 .lunbo {
+  position: absolute;
+  top: 400px;
+  left: 200px;
+}
+#page1 .lunbo:hover .jiantou {
+  display: block;
+  /* transform: translateX(-20px); */
+}
+#page1 .jiantou {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  transition: 2s;
+  display: none;
+}
+#page1 .jiantou.left {
+  position: absolute;
+  top: 140px;
+  left: 10px;
+}
+#page1 .jiantou.right {
+  position: absolute;
+  top: 140px;
+  right: 10px;
+}
+#page1 .jiantou img {
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#page2 {
+  background-image: url(./img/page2/bg.png);
+  background-size: cover;
+}
+
+#page3 {
+  background-image: url(./img/page3/bg.png);
+  background-size: cover;
+}
+#page4 {
+  background-image: url(./img/page4/bg.png);
+  background-size: cover;
+}
