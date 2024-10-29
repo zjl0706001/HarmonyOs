@@ -9,17 +9,35 @@
   <script>
     var nums = [];
     for (var i = 0; i < 10; i++) nums.push(Math.floor(Math.random() * 100));
-    const oushu = function (nums) {
-      var arr = [],
-        ans = 0;
-      for (var _ of nums)
-        if (_ % 2 == 0) {
-          ans.push(_);
-          ans += _;
-        }
-      return arr;
-    };
-
-    console.log(oushu(nums));
+    // const oushu = function (nums) {
+    //   var arr = [],
+    //     ans = 0;
+    //   for (var _ of nums)
+    //     if (_ % 2 == 0) {
+    //       arr.push(_);
+    //       ans += _;
+    //     }
+    //   return arr;
+    // };
+    // const oushu = function (nums, l, arr) {
+    //   if (l >= nums.length) return arr;
+    //   if (nums[l] % 2 === 0) arr.push(nums[l]);
+    //   return oushu(nums, l + 1, arr);
+    // };
+    function oushu1(arr, l, r, nums = []) {
+      if (l > r) {
+        return nums;
+      }
+      if (l === r) {
+        if (arr[l] % 2 == 0) nums.push(arr[l]);
+        return nums;
+      }
+      let mid = (l + r) >> 1;
+      oushu1(arr, l, mid, nums);
+      oushu1(arr, mid + 1, r, nums);
+      return nums;
+    }
+    console.log(nums);
+    console.log(oushu1(nums, 0, nums.length - 1));
   </script>
 </html>
