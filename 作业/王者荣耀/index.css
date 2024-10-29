@@ -13,16 +13,19 @@ html {
 .page {
   height: 100vh;
   display: flex;
-  position: relative;
 }
 #page1 {
   background-image: url(./img/page1/bg.png);
   background-size: cover;
 }
 #page1 .lunbo {
+  position: relative;
+}
+#lunboimg {
+  opacity: all 0.1;
   position: absolute;
-  top: 400px;
-  left: 200px;
+  top: 0px;
+  left: 0px;
 }
 #page1 .lunbo:hover .jiantou {
   display: block;
@@ -33,8 +36,8 @@ html {
   height: 40px;
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50px;
-  transition: 2s;
-  display: none;
+  /* transition: 2s; */
+  /* display: none; */
 }
 #page1 .jiantou.left {
   position: absolute;
@@ -44,7 +47,7 @@ html {
 #page1 .jiantou.right {
   position: absolute;
   top: 140px;
-  right: 10px;
+  left: 625px;
 }
 #page1 .jiantou img {
   width: 20px;

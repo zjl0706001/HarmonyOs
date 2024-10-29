@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    var nums = [];
+    for (var i = 0; i < 10; i++) nums.push(Math.floor(Math.random() * 100));
+    const oushu = function (nums) {
+      var arr = [],
+        ans = 0;
+      for (var _ of nums)
+        if (_ % 2 == 0) {
+          ans.push(_);
+          ans += _;
+        }
+      return arr;
+    };
+
+    console.log(oushu(nums));
+  </script>
+</html>
