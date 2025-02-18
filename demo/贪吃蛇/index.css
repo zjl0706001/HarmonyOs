@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #000000;
+}
+.app{
+    background-color: #99c9d1;
+    box-sizing: border-box;
+    border: 20px solid #002d4e;
+    border-radius: 20px;
+    height: 100vh;
+    width: 100vw;
+}

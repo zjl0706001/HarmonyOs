@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      class MyComponent extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        speak() {
+          console.log(this);
+        }
+        render() {
+          return (
+            <div onClick={this.speak}>
+              <h1>Hello</h1>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<MyComponent />, document.getElementById("example"));
+    </script>
+  </body>
+</html>

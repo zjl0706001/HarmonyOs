@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.app {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 9fr;
+  box-sizing: border-box;
+  min-width: 1728px;
+  max-width: 1728px;
+  max-height: 945px;
+  min-height: 945px;
+  background-image: url("images/background1.jpg");
+  background-size: cover;
+}
+.cards {
+  box-sizing: border-box;
+  padding: 100px 50px;
+  /*background-color: rgba(255, 147, 0, 0.37);*/
+}
+.board {
+  /*background-color: rgba(0, 255, 255, 0.35);*/
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 1fr 7fr;
+}
+.title {
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px;
+  /*background-color: rgba(255, 255, 0, 0.38);*/
+}
+.title .yanggaung {
+  box-sizing: border-box;
+  height: 50px;
+  width: 180px;
+  background: url("./images/sunback.png");
+  background-size: cover;
+  font-size: 26px;
+  padding: 10px 0 0 80px;
+}
+.title .chanzi {
+  width: 50px;
+  height: 50px;
+  margin-left: 800px;
+}
+.title .chanzi img {
+  width: 100%;
+}
+.gamebody {
+  position: relative;
+  /*background-color: rgba(29, 69, 69, 0.33);*/
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+}
+.xiaotuiches {
+  /*background-color: rgba(248, 0, 0, 0.3);*/
+  padding: 20px 0 40px 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.xiaotuiches img {
+  box-sizing: border-box;
+  margin: 60px 0 0 120px;
+}
+.caoping {
+  padding: 0 170px 40px 0;
+  /*background-color: rgba(241, 128, 128, 0.25);*/
+  /*display: grid;*/
+  position: relative;
+  /*grid-template-rows: 1fr 1fr 1fr 1fr 1fr;*/
+}
+.jiangshi {
+  position: absolute;
+}
+.caoping img {
+  position: absolute;
+}

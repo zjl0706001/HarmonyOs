@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BubbleSort</title>
+    <style>
+      .app {
+        width: 800px;
+        height: 500px;
+        background: #00bebd;
+        margin: 100px auto;
+        display: grid;
+        align-items: end;
+      }
+      .item {
+        border: #0a003c 1px solid;
+        transition: all 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start-sort" style="display: block; margin: 10px auto">
+      开始排序
+    </button>
+    <button id="pause-sort" style="display: block; margin: 10px auto">
+      暂停
+    </button>
+    <button id="resume-sort" style="display: block; margin: 10px auto">
+      继续
+    </button>
+    <button id="next-sort" style="display: block; margin: 10px auto">
+      下一步
+    </button>
+    <button style="display: block; margin: 10px auto">
+      <a href="" style="text-decoration: none; color: #000000">重新开始</a>
+    </button>
+    <script>
+      const arr = Array.from({ length: 15 }, () =>
+        Math.floor(Math.random() * 500),
+      );
+      let body = document.body;
+      let app = document.createElement("div");
+      app.classList.add("app");
+      app.style.gridTemplateColumns = `repeat(${arr.length}, 1fr)`;
+
+      arr.forEach((item) => {
+        let div = document.createElement("div");
+        div.style.height = `${item}px`;
+        div.style.background = "#c5b513";
+        div.classList.add("item");
+        app.appendChild(div);
+      });
+      body.appendChild(app);
+
+      const divs = document.querySelectorAll(".item");
+      let isPaused = false;
+      let isNextStep = false;
+
+      const bubbleSort = async function (divs) {
+        const len = divs.length;
+        for (let i = 0; i < len - 1; i++) {
+          for (let j = 0; j < len - 1 - i; j++) {
+            while (isPaused && !isNextStep) {
+              await new Promise((resolve) => setTimeout(resolve, 100));
+            }
+            isNextStep = false;
+            const currentHeight = parseInt(divs[j].style.height);
+            const nextHeight = parseInt(divs[j + 1].style.height);
+            divs[j].style.background = "#ffb4a6";
+            await new Promise((resolve) => setTimeout(resolve, 500));
+            if (currentHeight > nextHeight) {
+              divs[j].style.height = `${nextHeight}px`;
+              divs[j + 1].style.height = `${currentHeight}px`;
+            }
+            divs[j].style.background = "#c5b513";
+            divs[j + 1].style.background = "#ffb4a6";
+          }
+        }
+      };
+
+      document.getElementById("start-sort").addEventListener("click", () => {
+        bubbleSort(divs);
+      });
+
+      document.getElementById("pause-sort").addEventListener("click", () => {
+        isPaused = true;
+      });
+
+      document.getElementById("resume-sort").addEventListener("click", () => {
+        isPaused = false;
+      });
+
+      document.getElementById("next-sort").addEventListener("click", () => {
+        isPaused = true;
+        isNextStep = true;
+      });
+    </script>
+  </body>
+</html>

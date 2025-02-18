@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <script>
+      document.onmousedown = (e) => e.preventDefault();
+      document.oncontextmenu = (e) => e.preventDefault();
+    </script>
+  </head>
+  <body>
+    <div class="app">
+      <div class="cards"></div>
+      <div class="board">
+        <div class="title">
+          <div class="yanggaung">100</div>
+          <div class="chanzi">
+            <img src="./images/铁锹.png" alt="" />
+          </div>
+        </div>
+        <div class="gamebody">
+          <div class="xiaotuiches"></div>
+          <div class="caoping"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="index.js"></script>
+</html>

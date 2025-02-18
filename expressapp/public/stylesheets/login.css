@@ -1,0 +1,43 @@
+.login {
+  height: 380px;
+  width: 500px;
+  background: #ffffff;
+  margin: 200px auto;
+  display: grid;
+  grid-template-rows: 1fr 3fr 2fr;
+  padding: 20px;
+  border-radius: 5px;
+}
+.login .title {
+  text-align: center;
+  font-size: 38px;
+  line-height: 100px;
+}
+button,
+input {
+  width: 460px;
+  display: block;
+  padding: 10px 30px;
+  font-size: 26px;
+  border: none;
+  border-radius: 5px;
+  background: #f0f3f8;
+  outline: none;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+button {
+  background: #0665d0;
+  color: white;
+  border-radius: 5px;
+}
+.bottom {
+  box-sizing: border-box;
+  padding: 10px 30px;
+}
+a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: #6c7c8c;
+  font-size: 20px;
+}

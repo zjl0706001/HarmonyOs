@@ -1,0 +1,11 @@
+.cell {
+  background: aliceblue;
+  box-sizing: border-box;
+  border: 1px solid #c38282;
+}
+.she {
+  background: #c38282;
+}
+.food {
+  background: #cfa80b;
+}

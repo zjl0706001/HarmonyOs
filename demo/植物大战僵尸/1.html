@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="./images/plants/peashooter/attack/attack_0.png" alt="" />
+  </body>
+  <script>
+    let k = 0;
+    let img = document.querySelector("img");
+    setInterval(() => {
+      img.src = `./images/plants/peashooter/attack/attack_${this.k++ % 8}.png`;
+    }, 100);
+  </script>
+</html>

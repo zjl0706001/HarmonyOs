@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Stack {
+        constructor() {
+            this.data = [];
+        }
+        push(element) {
+            this.data.push(element);
+        }
+        pop() {
+            return this.data.pop();
+        }
+        peek() {
+            return this.data[this.data.length - 1];
+        }
+        isEmpty() {
+            return this.data.length === 0;
+        }
+        size() {
+            return this.data.length;
+        }
+    }
+</script>
+</html>

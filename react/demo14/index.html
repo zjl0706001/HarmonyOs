@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #root {
+        width: 100vw;
+        height: 100vh;
+        background: #cdd0ff;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script type="text/babel">
+    class Clickimg extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          boxes: [],
+        };
+      }
+      handleMouseClick = (e) => {
+        this.setState((prevState) => ({
+          boxes: [
+            ...prevState.boxes,
+            [
+              e.clientX - 25,
+              e.clientY - 25,
+              `${Math.floor(Math.random() * 100)}px`,
+              `#${new Array(6)
+                .fill(0)
+                .map(() => Math.floor(Math.random() * 10))
+                .join("")}`,
+            ],
+          ],
+        }));
+      };
+      render() {
+        return (
+          <div
+            style={{
+              width: "100vw",
+              height: "100vh",
+              background: "#cdd0ff",
+              position: "relative",
+            }}
+            onClick={this.handleMouseClick}
+          >
+            {this.state.boxes.map((box, index) => (
+              <div
+                key={index}
+                style={{
+                  height: box[2],
+                  width: box[2],
+                  background: box[3],
+                  position: "absolute",
+                  left: box[0],
+                  top: box[1],
+                }}
+              ></div>
+            ))}
+          </div>
+        );
+      }
+    }
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<Clickimg />);
+  </script>
+</html>

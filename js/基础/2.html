@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body></body>
+  <script>
+    class ImgPage {
+      constructor() {
+        this.root = document.querySelector("body");
+      }
+      creatbox(tagname) {
+        return document.createElement(tagname);
+      }
+      addbox(box, item) {
+        box.appendChild(item);
+      }
+      alter(item, dataName, value) {
+        item.setAttribute(dataName, value);
+      }
+    }
+    let page = new ImgPage();
+    let box = page.creatbox("img");
+    page.alter(box, "src", "./e0.png");
+    page.addbox(page.root, box);
+  </script>
+</html>

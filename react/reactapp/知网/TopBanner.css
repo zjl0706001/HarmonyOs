@@ -1,0 +1,29 @@
+.topbanner {
+  cursor: pointer;
+  height: 80px;
+  position: relative;
+}
+.topbanner-controller {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+.topbanner-controller-item {
+  height: 8px;
+  width: 8px;
+  margin: 0 8px;
+  border-radius: 4px;
+  background: #c9e3ff;
+  transition: 200ms;
+}
+.topbanner-controller-item.new-item {
+  width: 16px;
+}
+.close-btn {
+  font-size: 32px;
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}

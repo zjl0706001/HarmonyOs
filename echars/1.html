@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ECharts 长按滑动与滑动条拖动示例</title>
+    <!-- 引入 ECharts 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <style>
+      /* 设置图表容器的大小 */
+      #main {
+        width: 100%;
+        height: 600px;
+        position: relative;
+        touch-action: pan-y; /* 允许垂直滚动，防止水平手势被阻止 */
+      }
+      /* 可选：显示长按提示 */
+      #long-press-tip {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        display: none;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 长按提示 -->
+    <div id="long-press-tip">长按后滑动以滚动数据</div>
+    <!-- 图表容器 -->
+    <div id="main"></div>
+
+    <script>
+      // 初始化 ECharts 实例
+      const myChart = echarts.init(document.getElementById("main"));
+
+      // 生成 x 轴数据（1 到 100）
+      const xData = [];
+      for (var i = 1; i <= 100; i++) {
+        xData.push(i);
+      }
+
+      // 生成 y 轴数据（随机数 1 到 1000）
+      function generateRandomData(count) {
+        const data = [];
+        for (let i = 0; i < count; i++) {
+          data.push(Math.floor(Math.random() * 1000) + 1);
+        }
+        return data;
+      }
+
+      const lineData = generateRandomData(100);
+      const barData = generateRandomData(100);
+
+      // 图表配置
+      const option = {
+        title: {
+          text: "折线图与柱状图结合示例（长按滑动）",
+        },
+        tooltip: {
+          trigger: "axis",
+        },
+        legend: {
+          data: ["折线", "柱状"],
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {},
+          },
+        },
+        grid: {
+          left: "3%",
+          right: "4%",
+          bottom: "60", // 为了给 dataZoom 留出空间
+          containLabel: true,
+        },
+        xAxis: {
+          type: "category",
+          boundaryGap: true,
+          data: xData,
+          axisLabel: {
+            interval: 9, // 根据需要调整标签显示间隔
+          },
+        },
+        yAxis: {
+          type: "value",
+        },
+        dataZoom: [
+          {
+            type: "slider",
+            show: true,
+            start: 0,
+            end: 100,
+            xAxisIndex: [0],
+            bottom: 20,
+            handleIcon:
+              "M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z",
+            handleSize: "100%", // 使整个滑块区域可拖动
+          },
+          {
+            type: "inside",
+            start: 0,
+            end: 100,
+            xAxisIndex: [0],
+          },
+        ],
+        series: [
+          {
+            name: "柱状",
+            type: "bar",
+            data: barData,
+            itemStyle: {
+              color: "#73C0DE",
+            },
+          },
+          {
+            name: "折线",
+            type: "line",
+            data: lineData,
+            smooth: true,
+            itemStyle: {
+              color: "#EE6666",
+            },
+          },
+        ],
+      };
+
+      // 渲染图表
+      myChart.setOption(option);
+
+      // 长按滑动实现
+      (function () {
+        const chartContainer = document.getElementById("main");
+        const longPressTip = document.getElementById("long-press-tip");
+        let pressTimer = null;
+        let isLongPress = false;
+        let startX = 0;
+        let startY = 0;
+        let startStart = 0;
+        let startEnd = 100;
+        const longPressDuration = 500; // 长按判定时间（毫秒）
+
+        // 获取 grid 的高度和位置，用于判断是否在滑动条区域
+        function getGridRect() {
+          const grid = myChart.getOption().grid[0];
+          const left = parseInt(grid.left);
+          const right = parseInt(grid.right);
+          const bottom = parseInt(grid.bottom);
+          const height =
+            parseInt(grid.height) ||
+            chartContainer.clientHeight - left - right - 100; // 默认高度
+          return {
+            top: chartContainer.clientHeight - bottom - height,
+            bottom: chartContainer.clientHeight - bottom,
+          };
+        }
+
+        chartContainer.addEventListener("touchstart", function (e) {
+          if (e.touches.length !== 1) return;
+          const touch = e.touches[0];
+          startX = touch.clientX;
+          startY = touch.clientY;
+
+          // 判断是否在滑动条区域
+          const gridRect = getGridRect();
+          if (touch.clientY >= gridRect.top) {
+            // 在滑动条区域，忽略长按滑动
+            return;
+          }
+
+          pressTimer = setTimeout(function () {
+            isLongPress = true;
+            // 显示提示
+            longPressTip.style.display = "block";
+            // 获取当前 dataZoom 的范围
+            const dataZoom = myChart.getOption().dataZoom[0];
+            startStart = dataZoom.start;
+            startEnd = dataZoom.end;
+          }, longPressDuration);
+        });
+
+        chartContainer.addEventListener("touchmove", function (e) {
+          if (!isLongPress) return;
+          if (e.touches.length !== 1) return;
+          const touch = e.touches[0];
+          const deltaX = touch.clientX - startX;
+
+          // 根据滑动距离调整 dataZoom 的 start 和 end
+          const deltaPercent = (deltaX / chartContainer.clientWidth) * 100;
+          let newStart = startStart - deltaPercent;
+          let newEnd = startEnd - deltaPercent;
+
+          // 限制范围在 0 - 100 之间
+          newStart = Math.max(newStart, 0);
+          newEnd = Math.min(newEnd, 100);
+
+          myChart.setOption({
+            dataZoom: [
+              {
+                start: newStart,
+                end: newEnd,
+              },
+            ],
+          });
+        });
+
+        chartContainer.addEventListener("touchend", function (e) {
+          clearTimeout(pressTimer);
+          if (isLongPress) {
+            isLongPress = false;
+            // 隐藏提示
+            longPressTip.style.display = "none";
+          }
+        });
+
+        chartContainer.addEventListener("touchcancel", function (e) {
+          clearTimeout(pressTimer);
+          if (isLongPress) {
+            isLongPress = false;
+            longPressTip.style.display = "none";
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

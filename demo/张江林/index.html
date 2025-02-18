@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="head">
+      <div class="head-nav pinpai">
+        <div class="title pinpai-title">品牌</div>
+        <ul class="pinpai-list">
+          <li class="clickedbox">不限</li>
+          <li data-carId="7">宝马</li>
+          <li data-carId="9">奔驰</li>
+          <li data-carId="1">奥迪</li>
+          <li data-carId="36">丰田</li>
+          <li data-carId="79">路虎</li>
+        </ul>
+      </div>
+      <div class="head-nav chexi">
+        <div class="title chexi-title">车系</div>
+        <ul class="chexi-list">
+          <li class="clickedbox">不限</li>
+          <li>宝马X4</li>
+        </ul>
+      </div>
+      <div class="head-nav chexing">
+        <div class="title chexing-title">车型</div>
+        <ul class="chexing-list">
+          <li class="clickedbox">不限</li>
+          <li>两厢轿车</li>
+          <li>跑车</li>
+          <li>SUV</li>
+          <li>MPV</li>
+        </ul>
+      </div>
+      <div class="head-nav jiage">
+        <div class="title jiage-title">价格</div>
+        <ul class="jiage-list">
+          <li data-jiage="0-10000" class="clickedbox">不限</li>
+          <li data-jiage="0-20">20万以下</li>
+          <li data-jiage="20-30">20-30万</li>
+          <li data-jiage="30-50">30-50万</li>
+          <li data-jiage="50-10000">50万以上</li>
+          <li>
+            <div class="fanwei" onclick="">
+              <input type="text" placeholder="输入金额" class="inputone" />~
+              <input type="text" placeholder="输入金额" class="inputtwo" />万
+              <button>确定</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="head-nav gengduo">
+        <div class="title gengduo-title">更多</div>
+        <ul
+          class="gengduo-list"
+          style="grid-template-columns: repeat(7, 150px)"
+        >
+          <li>
+            <div class="milage">燃油类型</div>
+            <div class="xiala">
+              <div>汽油</div>
+              <div>柴油</div>
+            </div>
+          </li>
+          <li>
+            <div class="milage">驱动类型</div>
+            <div class="xiala">
+              <div>前驱</div>
+              <div>后驱</div>
+            </div>
+          </li>
+          <li>
+            <div class="milage">座位数</div>
+            <div class="xiala">
+              <div>2座</div>
+              <div>5座</div>
+            </div>
+          </li>
+          <li>
+            <div class="milage">排量</div>
+            <div class="xiala">
+              <div>汽油</div>
+              <div>柴油</div>
+            </div>
+          </li>
+          <li>
+            <div class="milage">变速箱</div>
+            <div class="xiala">
+              <div>汽油</div>
+              <div>柴油</div>
+            </div>
+          </li>
+          <li>
+            <div class="milage">里程</div>
+            <div class="xiala">
+              <div>汽油</div>
+              <div>柴油</div>
+            </div>
+          </li>
+          <li>
+            <div class="milage">排放</div>
+            <div class="xiala">
+              <div>汽油</div>
+              <div>柴油</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="shaixuan">
+      <div class="selete-title">当前筛选：</div>
+      <ul>
+        <li class="selete-pinpai">品牌：</li>
+        <li class="selete-chexi">车系：</li>
+        <li class="selete-chexing">车型：</li>
+        <li class="selete-jiage">价格：</li>
+      </ul>
+    </div>
+    <ul class="body"></ul>
+  </body>
+  <script src="./index.js"></script>
+</html>

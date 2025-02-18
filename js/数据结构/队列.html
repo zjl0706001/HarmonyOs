@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="">
+    class Queue {
+        constructor() {
+            this.data = [];
+        }
+
+        // 入队
+        enqueue(element) {
+            this.data.push(element);
+        }
+
+        // 出队
+        dequeue() {
+            return this.data.shift();
+        }
+
+        // 获取队头元素
+        front() {
+            return this.data[0];
+        }
+
+        // 判断队列是否为空
+        isEmpty() {
+            return this.data.length === 0;
+        }
+
+        // 获取队列长度
+        size() {
+            return this.data.length;
+        }
+    }
+</script>
+</html>

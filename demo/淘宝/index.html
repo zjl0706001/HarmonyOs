@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styled Index</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        list-style: none;
+        padding: 20px;
+        margin: 0;
+        width: 100%;
+        max-width: 1600px;
+        box-sizing: border-box;
+      }
+
+      li {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        overflow: hidden;
+      }
+
+      li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      li a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        text-align: center;
+      }
+
+      li img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      li .title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+        padding: 0 10px;
+        text-align: left;
+      }
+
+      li .price {
+        font-size: 14px;
+        color: #ff5722;
+        margin-bottom: 10px;
+        padding: 0 10px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <ul></ul>
+  </body>
+  <script>
+    const setdata = async () => {
+      const getdata = async () => {
+        let res = await fetch("http://127.0.0.1:8000/index/goods/");
+        return await res.json();
+      };
+      let data = await getdata();
+      let ul = document.querySelector("ul");
+      data.forEach((item) => {
+        ul.innerHTML += `
+          <li>
+            <a href="./goods.html?id=${item.url.split("?id=")[1].split("&")[0]}">
+              <img src="${item.img_url}" alt="${item.title}" />
+              <div class="title">${item.title}</div>
+              <div class="price">¥${item.price}</div>
+            </a>
+          </li>
+        `;
+      });
+    };
+    setdata();
+  </script>
+</html>

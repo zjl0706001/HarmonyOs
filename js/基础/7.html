@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Interaction</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .app {
+        width: 100vw;
+        height: 100vh;
+        background: #cdd0ff;
+        overflow: hidden;
+        position: relative;
+      }
+      .dot {
+        position: absolute;
+        background: red;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app"></div>
+  </body>
+  <script>
+    const app = document.querySelector(".app");
+    let lastXY = null;
+    let drawing = false;
+
+    function createDot(x, y, size) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      dot.style.left = x - size / 2 + "px";
+      dot.style.top = y - size / 2 + "px";
+      dot.style.width = size + "px";
+      dot.style.height = size + "px";
+      dot.style.opacity = "1";
+      app.appendChild(dot);
+    }
+
+    function draw(event) {
+      const { clientX, clientY } = event;
+      if (!lastXY) {
+        lastXY = [clientX, clientY];
+        return;
+      }
+      const [lastX, lastY] = lastXY;
+      const dx = clientX - lastX;
+      const dy = clientY - lastY;
+      const distance = Math.sqrt(dx ** 2 + dy ** 2);
+      const steps = Math.max(1, Math.ceil(distance / 2));
+      const stepX = dx / steps;
+      const stepY = dy / steps;
+
+      for (let i = 0; i <= steps; i++) {
+        const x = lastX + stepX * i;
+        const y = lastY + stepY * i;
+        const size = Math.max(2, 10 - (i / steps) * 8);
+        createDot(x, y, size);
+      }
+
+      lastXY = [clientX, clientY];
+    }
+
+    app.addEventListener("mousedown", (event) => {
+      drawing = true;
+      lastXY = [event.clientX, event.clientY];
+      app.addEventListener("mousemove", draw);
+    });
+
+    app.addEventListener("mouseup", () => {
+      drawing = false;
+      lastXY = null;
+      app.removeEventListener("mousemove", draw);
+    });
+
+    app.addEventListener("mouseleave", () => {
+      drawing = false;
+      lastXY = null;
+      app.removeEventListener("mousemove", draw);
+    });
+  </script>
+</html>

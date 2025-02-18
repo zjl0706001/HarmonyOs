@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .tab {
+        width: 978px;
+        margin: 100px auto;
+      }
+
+      .tab_list {
+        height: 39px;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+      }
+
+      .tab_list li {
+        float: left;
+        height: 39px;
+        line-height: 39px;
+        padding: 0 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .tab_list .current {
+        background-color: #c81623;
+        color: #fff;
+      }
+
+      .item {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="tab">
+      <div class="tab_list">
+        <ul>
+          <li class="current">0</li>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
+      </div>
+      <div class="tab_con">
+        <div class="item" style="display: block">0</div>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+      </div>
+    </div>
+    <script>
+      let tab_list = document.querySelector(".tab_list");
+      let lis = tab_list.querySelectorAll("li");
+      let items = document.querySelector(".tab_con").querySelectorAll("div");
+      let i;
+      for (i = 0; i < lis.length; i++) {
+        lis[i].setAttribute("index", i);
+      }
+      for (i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+          for (let i = 0; i < lis.length; i++) {
+            lis[i].className = "";
+          }
+          for (let j = 0; j < items.length; j++) {
+            items[j].style.display = "none";
+          }
+          this.className = "current";
+          const index = this.getAttribute("index");
+          console.log(index);
+          items[index].style.display = "block";
+        };
+      }
+    </script>
+  </body>
+</html>

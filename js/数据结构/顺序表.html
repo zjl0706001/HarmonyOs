@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="">
+    class SeqList {
+        constructor(size = 10) {
+            this.data = new Array(size);
+            this.length = 0;
+        }
+        // 插入元素
+        insert(index, value) {
+            if (index < 0 || index > this.length) {
+                return false; // 索引越界
+            }
+            for (let i = this.length; i > index; i--) {
+                this.data[i] = this.data[i - 1];
+            }
+            this.data[index] = value;
+            this.length++;
+            return true;
+        }
+        // 删除元素
+        remove(index) {
+            if (index < 0 || index >= this.length) {
+                return null;
+            }
+            const removedValue = this.data[index];
+            for (let i = index; i < this.length - 1; i++) {
+                this.data[i] = this.data[i + 1];
+            }
+            this.length--;
+            return removedValue;
+        }
+        // 查找元素
+        search(value) {
+            for (let i = 0; i < this.length; i++) {
+                if (this.data[i] === value) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        // 获取元素
+        get(index) {
+            if (index < 0 || index >= this.length) {
+                return null;
+            }
+            return this.data[index];
+        }
+    }
+</script>
+</html>

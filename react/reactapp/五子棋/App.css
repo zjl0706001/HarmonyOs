@@ -1,0 +1,10 @@
+.App {
+    width: 1600px;
+    height: 800px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    background-color: #e0edef;
+    box-sizing: border-box;
+    border: #000000 solid 3px;
+}

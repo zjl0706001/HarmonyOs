@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>goods</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #efefef;
+      }
+      .app {
+        width: 1400px;
+        height: 610px;
+        background: #ffffff;
+        border-radius: 20px;
+        margin: 50px auto;
+        display: grid;
+        grid-template-columns: 1fr 6fr 7fr;
+      }
+      .left {
+        margin: 16px 8px 16px 16px;
+      }
+      .center {
+        margin: 16px 8px 16px 8px;
+      }
+      .right {
+        margin: 16px 16px 16px 8px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        font-family: "Arial", sans-serif;
+      }
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      .center {
+        background-size: 100%;
+        border-radius: 20px;
+      }
+
+      .right h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .right span {
+        display: inline-block;
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        background-color: #ffae5e;
+        color: white;
+        font-size: 14px;
+        border-radius: 5px;
+      }
+
+      .right div {
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: #555;
+      }
+
+      .right .price {
+        font-size: 24px;
+        color: #d9534f;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+
+      .right .discount {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .right .shipping {
+        font-size: 16px;
+        color: #555;
+      }
+
+      .right .color-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .right .color-option {
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button {
+        width: 200px;
+        height: 50px;
+        background: #ffae5e;
+        border-radius: 10px;
+        color: #ffffff;
+        font-size: 20px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div class="left"></div>
+      <div class="center"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+  <script>
+    const goodsId = location.href.split("?id=")[1];
+    const leftbox = document.querySelector(".left");
+    const centerbox = document.querySelector(".center");
+    const rightbox = document.querySelector(".right");
+
+    const setdata = async () => {
+      try {
+        const res = await fetch(
+          `http://127.0.0.1:8000/index/selectGood/?goodsId=${goodsId}`,
+        );
+        const data = await res.json();
+        const {
+          img_url = [],
+          title = "商品标题缺失",
+          city = "未知城市",
+          price = "暂无价格",
+          colorsItems = [],
+        } = data;
+
+        centerbox.style.backgroundImage = `url(${img_url[0]})`;
+        img_url.forEach((item) => {
+          leftbox.innerHTML += `<img src="${item}" onmouseenter="centerbox.style.backgroundImage = 'url(${item})'" alt="商品图片">`;
+        });
+        rightbox.innerHTML += `
+          <h1>${title}</h1>
+          <span>可开发票</span>
+          <div class="price">${price}</div>
+          <div class="discount">$2 店铺新客</div>
+          <div class="shipping">配送地址：${city}</div>
+          <div>保障：假一赔四 急速退款 七天无理由退换</div>
+          <div class="color-options">
+              <span>颜色分类：</span>
+              ${
+                colorsItems.length > 0
+                  ? colorsItems
+                      .map(
+                        (item) => `<div class="color-option">${item[1]}</div>`,
+                      )
+                      .join("")
+                  : "暂无颜色分类"
+              }
+          </div>
+        `;
+        let buttton = document.createElement("button");
+        buttton.innerText = "加入购物车";
+        buttton.onclick = () => {
+          const setshopping = async () => {
+            await fetch("http://127.0.0.1:8000/index/shopping/", {
+              method: "POST",
+              body: JSON.stringify({
+                goodsId: goodsId,
+              }),
+            });
+          };
+          setshopping();
+          window.open("./shopping.html");
+        };
+        rightbox.appendChild(buttton);
+      } catch (error) {
+        console.error("数据加载失败：", error);
+        rightbox.innerHTML = `<div>商品信息加载失败，请稍后重试。</div>`;
+      }
+    };
+
+    setdata();
+  </script>
+</html>

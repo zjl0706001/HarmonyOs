@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>quickSort</title>
+    <style>
+      .app {
+        width: 800px;
+        height: 500px;
+        background: #00bebd;
+        margin: 100px auto;
+        display: grid;
+        align-items: end;
+      }
+      .item {
+        border: #0a003c 1px solid;
+        transition: all 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start-sort" style="display: block; margin: 10px auto">
+      开始排序
+    </button>
+    <button style="display: block; margin: 10px auto">
+      <a href="" style="text-decoration: none; color: #000000">重新开始</a>
+    </button>
+    <script>
+      // 初始化数组和页面元素
+      // const arr = Array.from({ length: 15 }, () =>
+      //   Math.floor(Math.random() * 500),
+      // );
+      const arr = [
+        110, 300, 400, 200, 100, 220, 120, 500, 40, 70, 228, 432, 345, 456, 345,
+      ];
+      const body = document.body;
+      const app = document.createElement("div");
+      app.classList.add("app");
+      app.style.gridTemplateColumns = `repeat(${arr.length}, 1fr)`;
+
+      arr.forEach((item) => {
+        const div = document.createElement("div");
+        div.style.height = `${item}px`;
+        div.style.background = "#c5b513";
+        div.classList.add("item");
+        app.appendChild(div);
+      });
+      body.appendChild(app);
+
+      const divs = document.querySelectorAll(".item");
+      const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+      const quickSort = async function (divs, l, r) {
+        if (l >= r) return;
+        let i = l,
+          j = r;
+        const mid = divs[(l + r) >> 1];
+        mid.style.background = "#000000";
+        await delay(2000);
+        while (i < j) {
+          while (parseInt(divs[i].style.height) < parseInt(mid.style.height)) {
+            divs[i].style.background = "#ff5722";
+            await delay(2000);
+            divs[i].style.background = "#c5b513";
+            i++;
+          }
+          divs[i].style.background = "#ff5722";
+          await delay(1000);
+          while (parseInt(divs[j].style.height) > parseInt(mid.style.height)) {
+            divs[j].style.background = "#2196f3";
+            await delay(2000);
+            divs[j].style.background = "#c5b513";
+            j--;
+          }
+          divs[j].style.background = "#2196f3";
+          await delay(1000);
+          if (i < j) {
+            [divs[i].style.height, divs[j].style.height] = [
+              divs[j].style.height,
+              divs[i].style.height,
+            ];
+            await delay(2000);
+            divs[i].style.background = divs[j].style.background = "#c5b513";
+            i++;
+            j--;
+            divs[i].style.background = "#ff5722";
+            divs[j].style.background = "#2196f3";
+          }
+        }
+
+        mid.style.background = "#c5b513";
+        console.log(i, j);
+        // await quickSort(divs, l, j);
+        // await quickSort(divs, i, r);
+      };
+
+      // 按钮事件绑定
+      document.getElementById("start-sort").addEventListener("click", () => {
+        quickSort(divs, 0, divs.length - 1);
+      });
+    </script>
+  </body>
+</html>

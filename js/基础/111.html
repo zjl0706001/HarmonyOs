@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul></ul>
+  </body>
+  <script>
+    let ul = document.querySelector("ul");
+    let newli;
+    for (let i = 0; i < 10; i++) {
+      let li = document.createElement("li");
+      li.innerHTML = i.toString();
+      ul.appendChild(li);
+    }
+    // let log = function (e) {
+    //   e.target.timer = setInterval(() => {
+    //     console.log(e.target.innerHTML);
+    //   }, 1000);
+    // };
+    // ul.addEventListener("click", log);
+    ul.addEventListener("click", (e) => {
+      if (e.target.tagName && !newli) {
+        newli = e.target;
+        newli.timer = setInterval(() => {
+          console.log(e.target.innerHTML);
+        }, 1000);
+      }
+      if (e.target.tagName && e.target !== newli) {
+        clearInterval(newli.timer);
+        newli = e.target;
+        newli.timer = setInterval(() => {
+          console.log(e.target.innerHTML);
+        }, 1000);
+      }
+    });
+  </script>
+</html>

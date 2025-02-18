@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.app {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  background: url("./img/background.png");
+}
+#hero {
+  width: 100px;
+  height: 72px;
+  z-index: 999;
+  unicode-bidi: isolate;
+  position: absolute;
+  top: 80%;
+  left: 45%;
+}
+button {
+  font-size: 52px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 60%;
+  left: 42%;
+}
+.bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #000000;
+  position: absolute;
+}
+.enemy {
+  width: 100px;
+  height: 72px;
+  z-index: 999;
+  position: absolute;
+}
+#fraction {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 32px;
+  font-weight: bold;
+  background-color: #00bebd;
+  position: absolute;
+  border-radius: 50%;
+  border: #0a003c solid 10px;
+  top: 2%;
+  left: 2%;
+  color: #0047d5;
+}

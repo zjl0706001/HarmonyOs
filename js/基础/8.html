@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Interaction</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .app {
+        width: 100vw;
+        height: 100vh;
+        background: #cdd0ff;
+        overflow: hidden;
+        position: relative;
+      }
+      .dot {
+        position: absolute;
+        background: red;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app"></div>
+  </body>
+  <script>
+    const app = document.querySelector(".app");
+    let startXY = null;
+    function setMove(event) {
+      const { clientX, clientY } = event;
+      if (!startXY) return;
+      const dx = clientX - startXY[0];
+      const dy = clientY - startXY[1];
+      for (let k = 1; k <= 10; k++) {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        dot.style.left = startXY[0] + dx * k * 0.1 + "px";
+        dot.style.top = startXY[1] + dy * k * 0.1 + "px";
+        dot.style.width = Math.abs(dx * 0.1) + "px";
+        dot.style.height = Math.abs(dy * 0.1) + "px";
+        app.appendChild(dot);
+      }
+      startXY = [clientX, clientY];
+    }
+
+    app.addEventListener("mousedown", (event) => {
+      startXY = [event.clientX, event.clientY];
+      app.addEventListener("mousemove", setMove);
+    });
+
+    app.addEventListener("mouseup", () => {
+      startXY = null;
+      app.removeEventListener("mousemove", setMove);
+    });
+  </script>
+</html>

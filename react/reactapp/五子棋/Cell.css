@@ -1,0 +1,14 @@
+.cell {
+  background: #b58b51;
+  box-sizing: border-box;
+  border: 1px solid #321b1b;
+}
+.cell:hover {
+  background: #aeaeae;
+}
+.cell.a {
+  background: #ffffff;
+}
+.cell.b {
+  background: #000000;
+}

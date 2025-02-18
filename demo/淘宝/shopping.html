@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping</title>
+  </head>
+  <body>
+    <h1>Shopping List</h1>
+    <ul id="shopping-list"></ul>
+
+    <script>
+      const getShopping = async () => {
+        try {
+          let res = await fetch("http://127.0.0.1:8000/index/getShopping/");
+          let data = await res.json();
+          const listElement = document.getElementById("shopping-list");
+          listElement.innerHTML = "";
+          data.forEach((item) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `商品ID: ${item.goodsId}`;
+            listElement.appendChild(listItem);
+          });
+        } catch (error) {
+          console.error("获取购物数据失败:", error);
+        }
+      };
+      getShopping();
+    </script>
+  </body>
+</html>

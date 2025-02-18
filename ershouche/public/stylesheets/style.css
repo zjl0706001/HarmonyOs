@@ -1,0 +1,9 @@
+@import "//unpkg.com/layui@2.9.20/dist/css/layui.css";
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}

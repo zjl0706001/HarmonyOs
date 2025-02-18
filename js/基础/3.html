@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Improved</title>
+  </head>
+  <body>
+    <input type="text" />
+    <div>111</div>
+    <button>+1</button>
+  </body>
+  <script>
+    let k = { uname: 111 };
+    Object.defineProperty(k, "name", {
+      set(value) {
+        this.uname = parseFloat(value) || 0;
+        document.querySelector("div").innerHTML = `${this.uname}`;
+        document.querySelector("input").value = `${this.uname}`;
+      },
+      get() {
+        return this.uname;
+      },
+    });
+    document.querySelector("input").oninput = (e) => {
+      k.name = e.target.value;
+      console.log("input", k);
+      console.log(k);
+    };
+    document.querySelector("button").onclick = () => {
+      k.name = k.name + 1;
+      console.log("button", k);
+      console.log(k);
+    };
+  </script>
+</html>

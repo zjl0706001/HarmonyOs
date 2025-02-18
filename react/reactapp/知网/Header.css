@@ -1,0 +1,64 @@
+.header {
+  height: 500px;
+  background: url("https://piccache.cnki.net/kdn/index/kns8s/nimages/banner.jpg")
+    no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  height: 88px;
+  background: url("https://piccache.cnki.net/kdn/index/kns8s/nimages/banner-wave.png")
+    no-repeat center bottom;
+  background-size: 100% 100%;
+}
+.nav {
+  height: 70px;
+  display: grid;
+  grid-template-columns: 1fr 6fr 9fr;
+  background: rgba(0, 0, 0, 0.11);
+  color: #ffffff;
+  font-size: 15px;
+  overflow: hidden;
+}
+.nav-logo {
+  margin-top: 15px;
+  margin-left: 30px;
+  height: 50px;
+  width: 60px;
+  background: url("https://piccache.cnki.net/kdn/index/kns8s/nimages/icons-big.png")
+    60px 310px;
+}
+.head-left {
+  box-sizing: border-box;
+  line-height: 72px;
+  height: 70px;
+  display: grid;
+
+  grid-template-columns: repeat(8, auto);
+}
+.nav-item {
+  margin-right: 32px;
+  height: 70px;
+}
+.nav-item:hover {
+  color: #c5eaff;
+  cursor: pointer;
+}
+.dropdown-content {
+  animation: dropdown-content 500ms;
+}
+@keyframes dropdown-content {
+  from {
+    height: 0;
+  }
+  to {
+    height: 160px;
+  }
+}

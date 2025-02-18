@@ -1,0 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#root {
+  min-width: 1920px;
+}

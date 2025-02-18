@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function mergeSort(arr, l, r) {
+      if (l >= r) return;
+      let mid = (l + r) >> 1;
+      mergeSort(arr, l, mid);
+      mergeSort(arr, mid + 1, r);
+      let k = 0,
+        i = l,
+        j = mid + 1;
+      let tmp = [];
+      while (i <= mid && j <= r) {
+        if (arr[i] <= arr[j]) tmp[k++] = arr[i++];
+        else tmp[k++] = arr[j++];
+      }
+      while (i <= mid) tmp[k++] = arr[i++];
+      while (j <= r) tmp[k++] = arr[j++];
+      for (i = l, j = 0; i <= r; i++, j++) arr[i] = tmp[j];
+    }
+    var num = [];
+    for (var i = 0; i < 10; i++) {
+      num.push(Math.floor(Math.random() * 100));
+    }
+    document.write(num);
+    mergeSort(num, 0, num.length - 1);
+    document.write("<br>");
+    document.write(num);
+  </script>
+</html>

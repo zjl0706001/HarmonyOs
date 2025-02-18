@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    class Axios {
+      constructor(url) {
+        this.url = url;
+        this.req = new XMLHttpRequest();
+      }
+      async http(type, reqbody) {
+        return await new Promise((resolve, reject) => {
+          if (type === "GET") {
+            this.get(reqbody);
+          } else if (type === "POST") {
+            this.post(reqbody);
+          } else {
+            reject("Unsupported request type");
+          }
+          this.req.onreadystatechange = function () {
+            if (this.readyState === 4) {
+              if (this.status === 200) {
+                resolve(this.response);
+              } else {
+                reject(this.response);
+              }
+            }
+          };
+        });
+      }
+      get(reqbody) {
+        const queryString = new URLSearchParams(reqbody).toString();
+        this.req.open("GET", `${this.url}?${queryString}`);
+        this.req.send();
+      }
+      post(reqbody) {
+        this.req.open("POST", this.url);
+        this.req.send(JSON.stringify(reqbody));
+      }
+      setheader(obj) {
+        for (let _ in obj) this.req.setRequestHeader(_, obj[_]);
+      }
+    }
+
+    let obj = { name: 1, age: 2 };
+    let res = new Axios("http://localhost:3000");
+
+    res
+      .http("GET", obj)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  </script>
+</html>

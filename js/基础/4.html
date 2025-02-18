@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let body = document.querySelector("body");
+    let ul = document.createElement("ul");
+    for (let i = 0; i < 4; i++) {
+      let li = document.createElement("li");
+      let box = document.createElement("input");
+      box.type = "checkbox";
+      let text = document.createTextNode("1233");
+      li.appendChild(box);
+      li.appendChild(text);
+      ul.appendChild(li);
+    }
+    body.appendChild(ul);
+    let g = ["全选", "全不选", "反选"];
+    g.forEach((item) => {
+      let button = document.createElement("button");
+      button.innerText = item;
+      body.appendChild(button);
+    });
+    let checkboxs = document.querySelectorAll("input[type='checkbox']");
+    let button = document.querySelectorAll("button");
+    button[0].onclick = function () {
+      for (let i = 0; i < checkboxs.length; i++) {
+        checkboxs[i].checked = true;
+      }
+    };
+    button[1].onclick = function () {
+      for (let i = 0; i < checkboxs.length; i++) {
+        checkboxs[i].checked = false;
+      }
+    };
+    button[2].onclick = function () {
+      for (let i = 0; i < checkboxs.length; i++) {
+        checkboxs[i].checked = !checkboxs[i].checked;
+      }
+    };
+  </script>
+</html>

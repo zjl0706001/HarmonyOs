@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: #ffffff;
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      .root {
+        height: 100vh;
+        overflow: auto;
+        min-width: 600px;
+        max-width: 600px;
+        margin: 0 auto;
+        box-sizing: border-box;
+        background: #d4dfd4;
+        padding: 30px 20px;
+        display: grid;
+        grid-template-rows: 3fr 1fr 6fr;
+      }
+      .head {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+      }
+      .head img {
+        width: 100%;
+      }
+      .head .doc {
+        display: grid;
+        grid-auto-rows: 1fr 1fr 1fr;
+      }
+      .head .doc .title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body></body>
+  <script>
+    let goods_id = location.href.split("=")[1];
+    fetch(`http://127.0.0.1:3000/info/${goods_id}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        document.body.innerHTML = `
+            <div class="root">
+              <div class="head">
+                <img
+                  src="${data.goods_img}"
+                  alt=""
+                />
+                <div class="doc">
+                  <div class="title">${data.goods_name}</div>
+                  <div class="zuozhe">1</div>
+                </div>
+              </div>
+              <div class="pingfen">12221</div>
+              <div class="doc">2121</div>
+            </div>`;
+      });
+  </script>
+</html>

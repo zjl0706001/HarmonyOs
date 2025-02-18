@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Rating</title>
+    <style>
+      .app {
+        width: 250px;
+        height: 50px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+      }
+      .star {
+        width: 50px;
+        height: 50px;
+        background: url("star.gif") 0 0 no-repeat;
+        background-size: cover;
+        transition: background-position-y 0.3s ease;
+      }
+      .message {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app"></div>
+    <div class="message">
+      <div class="hover-message"></div>
+      <div class="selected-message"></div>
+    </div>
+    <script>
+      const app = document.querySelector(".app");
+      const hoverMessage = document.querySelector(".hover-message");
+      const selectedMessage = document.querySelector(".selected-message");
+      const ratings = ["1星", "2星", "3星", "4星", "5星"];
+      let selectedstar = -1;
+      const createStars = () => {
+        for (let i = 0; i < 5; i++) {
+          const star = document.createElement("div");
+          star.classList.add("star");
+          star.dataset.index = i.toString();
+          app.appendChild(star);
+        }
+      };
+      const updateStars = (hoverIndex) => {
+        const stars = document.querySelectorAll(".star");
+        stars.forEach((star, index) => {
+          star.style.backgroundPositionY =
+            index <= hoverIndex ? "-50px" : "0px";
+        });
+      };
+      const updateHoverMessage = (index) => {
+        hoverMessage.textContent = index >= 0 ? `${ratings[index]}` : "";
+      };
+      const updateSelectedMessage = (index) => {
+        selectedMessage.textContent = index >= 0 ? `${ratings[index]}` : "";
+      };
+      app.addEventListener("mouseover", (e) => {
+        if (e.target.classList.contains("star")) {
+          const hoverIndex = e.target.dataset.index;
+          updateStars(hoverIndex);
+          updateHoverMessage(hoverIndex);
+        }
+      });
+      app.addEventListener("mouseout", () => {
+        updateStars(selectedstar);
+        updateHoverMessage(-1);
+      });
+      app.addEventListener("click", (e) => {
+        if (e.target.classList.contains("star")) {
+          selectedstar = e.target.dataset.index;
+          updateStars(selectedstar);
+          updateSelectedMessage(selectedstar);
+        }
+      });
+      createStars();
+    </script>
+  </body>
+</html>
