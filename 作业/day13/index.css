@@ -45,7 +45,6 @@ a {
   height: calc(100% - 50px);
   padding-right: 20px;
   overflow-y: auto;
-  overflow: hidden;
 }
 .root-left-body:hover {
   overflow: auto;

@@ -27,6 +27,7 @@ html {
 
 .lunboimg {
     opacity: 0;
+    transition: 2s;
     position: absolute;
     top: 0;
     left: 0;
@@ -46,8 +47,7 @@ html {
     height: 40px;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50px;
-    /* transition: 2s; */
-    /* display: none; */
+    display: none;
 }
 
 #page1 .jiantou.left {
@@ -67,6 +67,34 @@ html {
     height: 20px;
     margin-top: 10px;
     margin-left: 10px;
+}
+
+#page1 .radius {
+    height: 12px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 300px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#page1 .radius li {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    opacity: 0.6;
+    margin: 0 3px;
+    padding: 0;
+    list-style: none;
+}
+
+#page1 .radius-active {
+    opacity: 1 !important;
+    border: 2px solid rgb(255, 255, 255, 0.5);
+    background-clip: padding-box;
 }
 
 #page2 {
