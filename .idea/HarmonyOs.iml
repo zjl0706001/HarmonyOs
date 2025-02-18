@@ -5,6 +5,27 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/demo/植物大战僵尸/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/ershouche/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/ershouche/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/ershouche/public/module/bootstrap/js/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/expressapp/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/expressapp/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/js/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/react/reactapp/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/server/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/test-vue-git-xixi/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/travelApp/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/travelServer/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/travelServer/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/communityService/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/qimenghuiben/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/vite-project/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/viteApp/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/vue2app/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/vue3app/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/vue/yidong/.idea" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
