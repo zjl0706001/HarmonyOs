@@ -1,0 +1,64 @@
+mysql -uroot -p123456;
+use ershouche;
+
+-- 创建品牌表
+CREATE TABLE `brands` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,                -- 品牌唯一标识
+    `name` VARCHAR(255) NOT NULL,                       -- 品牌名称
+    `img_url` VARCHAR(255) NOT NULL                     -- 品牌名称
+);
+
+-- 创建系列表
+CREATE TABLE `series` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,                -- 系列唯一标识
+    `name` VARCHAR(255) NOT NULL,                       -- 系列名称
+    `brand_id` INT NOT NULL,                            -- 所属品牌
+    FOREIGN KEY (`brand_id`) REFERENCES `brands`(`id`)  -- 外键约束
+);
+
+-- 创建汽车表
+CREATE TABLE cars (
+    car_id INT NOT NULL,                               -- 车的唯一 ID，设为主键
+    authentication_method VARCHAR(255) NOT NULL,       -- 认证方法
+    brand_id INT NOT NULL,                             -- 品牌 ID（外键）
+    series_id INT NOT NULL,                            -- 系列 ID（外键）
+    car_name VARCHAR(255) NOT NULL,                    -- 车名
+    car_source_city_name VARCHAR(255) NOT NULL,        -- 车来源城市
+    car_year INT NOT NULL,                             -- 车年份
+    image VARCHAR(255) NOT NULL,                       -- 图片链接
+    official_price VARCHAR(255) NOT NULL,              -- 官方价格
+    sh_price VARCHAR(255) NOT NULL,                    -- 售价
+    sub_title VARCHAR(255) NOT NULL,                   -- 副标题
+    title VARCHAR(255) NOT NULL,                       -- 标题
+    PRIMARY KEY (car_id),                              -- 将 car_id 设为主键，自动具备唯一性和非空约束
+    FOREIGN KEY (brand_id) REFERENCES brands(id),     -- 外键约束
+    FOREIGN KEY (series_id) REFERENCES series(id)     -- 外键约束
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+
+
+let carData = {
+  has_more: true,
+  search_sh_sku_info_list: [
+    {
+      authentication_method: "无认证",
+      brand_id: 1,
+      brand_name: "大众",
+      brand_source_city_name: "合肥",
+      car_id: 6342,
+      car_name: "2.0L 自动真皮版",
+      car_source_city_name: "合肥",
+      car_year: 2009,
+      image:
+        "https://p3-dcd-sign.byteimg.com/tos-cn-i-f042mdwyw7/4c65158be17145bfa3a1c16527cba0dc~tplv-f042mdwyw7-auto-webp:480:0.jpg?rk3s=4892dee6&x-expires=1735298167&x-signature=%2FEjcptza86wgzjapS5OKKsVkitY%3D&psm=motor.sh.pack",
+      official_price: ".",
+      series_id: 414,
+      series_name: "速腾",
+      sh_price: ".",
+      sub_title: " | .",
+      title: "速腾 2009款 2.0L 自动真皮版",
+    },
+  ],
+};

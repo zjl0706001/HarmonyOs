@@ -1,0 +1,25 @@
+{
+  "name": "qimenghuiben",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@nutui/icons-vue": "^0.1.1",
+    "@nutui/nutui": "^4.3.13",
+    "axios": "^1.7.9",
+    "js-cookie": "^3.0.5",
+    "vant": "^4.9.15",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "better-xlsx": "^0.7.6",
+    "vite": "^6.0.5"
+  }
+}

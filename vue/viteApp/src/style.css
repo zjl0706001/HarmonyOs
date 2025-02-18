@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0; -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+::-webkit-scrollbar {
+    width: 0;
+}
+/*::-webkit-scrollbar-track {*/
+/*    background: #545c64;*/
+/*}*/
+/*::-webkit-scrollbar-thumb {*/
+/*    background-color:#606a78;*/
+/*    border-radius: 11px;*/
+/*}*/
+/*.el-sub-menu.is-opened .el-menu-item{*/
+/*    background: #1f2d3d;*/
+/*    color: #f8f5f9*/
+/*}*/
+/*.el-sub-menu.is-opened .el-menu-item:hover{*/
+/*    background: #001528*/
+/*}*/

@@ -1,0 +1,78 @@
+<template>
+  <Title title="轮播图分类" />
+  <Select :inputs="inputs" :getData="fetchNotices" :selectData="selectData" />
+  <Show
+    title="公告"
+    :titleHead="titleHead"
+    :formHead="formHead"
+    :tableData="tableData"
+    :getData="fetchNotices"
+    :onSubmit="onSubmit"
+    :handleDelete="handleDelete"
+  />
+</template>
+<script setup>
+import Select from "../../../components/Select.vue";
+import Title from "../../../components/Title.vue";
+import { onMounted, ref } from "vue";
+import Show from "../../../components/Show.vue";
+import { useRouter } from "vue-router";
+import {
+  addBanner,
+  deleteBanner,
+  bannerList,
+  updateBanner,
+} from "../../../api/user.js";
+const inputs = ref([
+  {
+    label: "名字",
+  },
+]);
+// 状态管理
+const titleHead = ref([
+  { label: "序号", prop: "id", type: "text" },
+  { label: "名字", prop: "name", type: "text" },
+  { label: "主图", prop: "coverImage", type: "img" },
+  { label: "描述", prop: "desc", type: "text" },
+  { label: "操作", prop: "handle", type: "btn" },
+]);
+const tableData = ref([]);
+const formHead = ref([
+  { prop: "name", title: "名字", value: "" },
+  { prop: "desc", title: "简介", value: "" },
+  { prop: "coverImage", title: "主图", value: "" },
+]);
+const router = useRouter();
+
+// 获取公告数据
+const fetchNotices = async () => {
+  const res = await bannerList();
+  tableData.value = res.data.data;
+};
+
+// 删除公告
+const handleDelete = async (row) => {
+  await deleteBanner(row.id);
+  router.go(0); // 刷新页面
+};
+
+// 提交表单
+const onSubmit = async (body, isAdd) => {
+  console.log(body, isAdd);
+  if (!isAdd) {
+    await addBanner(body);
+    router.go(0);
+  } else {
+    await updateBanner(isAdd, body);
+    router.go(0);
+  }
+};
+
+// 初始化数据
+onMounted(fetchNotices);
+
+// Select 组件逻辑
+const selectData = (v1) => {
+  tableData.value = tableData.value.filter((item) => item.name.includes(v1));
+};
+</script>

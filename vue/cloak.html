@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script src="axios.min.js"></script>
+  </head>
+  <style>
+    li {
+      list-style: none;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <input type="text" v-model="city" v-on:keyup.enter="fn" />
+      <ul>
+        <li v-for="(v,k) in num" :key="k">{{v.city}}</li>
+      </ul>
+      <button @click="time=new Date()">更新时间</button>
+      <p>{{time}}</p>
+    </div>
+  </body>
+  <script>
+    let { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          city: "",
+          num: [],
+          time: new Date(),
+        };
+      },
+      methods: {
+        async fn() {
+          let { status, data } = await axios.get(
+            "http://gfeljm.tianqiapi.com/api?unescape=1&version=v61&appid=81263999&appsecret=5N2q6Zag&city=" +
+              this.city,
+          );
+          console.log(data);
+          console.log(status);
+          if (status !== 200) {
+            throw new Error("请求失败");
+          }
+          this.num.push(
+            data.city +
+              "空气质量为：" +
+              data.air_tips +
+              "最高气温为：" +
+              data.nums,
+          );
+        },
+      },
+    }).mount("#app");
+  </script>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script>
+    const { createApp } = Vue;
+    let vm = createApp({
+      data() {
+        return {
+          messages: [],
+          message: "",
+        };
+      },
+      methods: {
+        addMessage() {
+          if (this.message.trim()) {
+            this.messages.unshift(this.message);
+            this.message = "";
+          }
+        },
+      },
+    }).mount("#root");
+  </script>
+</html>
